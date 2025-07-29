@@ -1,0 +1,48 @@
+# Node
+node_modules/
+
+# Vite
+/dist
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Others
+*.tmp
+*.swp
+
+# Coverage
+coverage/
+
+# IDE
+.idea/
+
+# Images temporárias
+*.heic
+*.HEIC
+
+# SASS/SCSS cache
+.sass-cache/
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Windows
+*.lnk
