@@ -309,7 +309,7 @@ function App() {
       {/* Hero Section */}
       <section
         id="home"
-        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20 px-2 sm:px-4"
       >
         {/* Subtle animated background + scanlines + partículas */}
         <div className="absolute inset-0 pointer-events-none">
@@ -329,10 +329,10 @@ function App() {
           ></div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 relative z-10">
           <div className="text-center space-y-8 sm:space-y-12">
             {/* Terminal window */}
-            <div className="inline-block bg-card/90 backdrop-blur border border-border rounded-xl overflow-hidden shadow-2xl max-w-2xl w-full mx-4 sm:mx-0 focus-within:ring-2 focus-within:ring-primary font-[Fira_Code,monospace]">
+            <div className="block bg-card/90 backdrop-blur border border-border rounded-xl overflow-x-auto shadow-2xl w-full max-w-full focus-within:ring-2 focus-within:ring-primary font-[Fira_Code,monospace]">
               {/* Terminal header */}
               <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 bg-card border-b border-border font-[Fira_Code,monospace]">
                 <div className="flex items-center space-x-2">
@@ -387,7 +387,7 @@ function App() {
                   <span className="text-green-400">$</span>
                   <span className="text-foreground">echo $PASSION</span>
                 </div>
-                <div className="text-primary ml-3 sm:ml-4 typing-animation break-words font-semibold">
+                <div className="text-primary ml-3 sm:ml-4 typing-animation font-semibold inline-block" style={{whiteSpace: 'pre'}}>
                   "Transformar ideias em código que impacta vidas"
                 </div>
               </div>
@@ -401,11 +401,24 @@ function App() {
                 </span>
                 <br />
                 <span className="text-2xl sm:text-3xl lg:text-4xl font-light text-muted-foreground bree-serif-regular">
-                  {typingText}
                   <span
-                    className="inline-block w-2 h-6 align-middle bg-muted-foreground animate-pulse ml-1"
-                    style={{ borderRadius: 2 }}
-                  ></span>
+                    className="inline-flex items-center"
+                    style={{ verticalAlign: 'middle', whiteSpace: 'pre' }}
+                  >
+                    {typingText}
+                    <span
+                      className="w-2"
+                      style={{
+                        height: '1em', // altura igual ao texto
+                        background: 'var(--muted-foreground)',
+                        borderRadius: 2,
+                        marginLeft: '0.25em',
+                        display: 'inline-block',
+                        animation: 'pulse 1s infinite',
+                        verticalAlign: 'middle',
+                      }}
+                    ></span>
+                  </span>
                 </span>
               </h1>
 
@@ -481,7 +494,7 @@ function App() {
       <br />
 
       {/* About Section */}
-      <section id="about" className="py-20 relative">
+      <section id="about" className="py-20 relative px-2 sm:px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold gradient-text mb-4 righteous-regular">
@@ -492,7 +505,7 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="space-y-6">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-foreground">
@@ -577,7 +590,7 @@ function App() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-2 sm:gap-4">
               <div className="space-y-4">
                 <img
                   src={trabalho}
@@ -608,7 +621,7 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 relative">
+      <section id="skills" className="py-20 relative px-2 sm:px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold gradient-text mb-4 righteous-regular">
@@ -626,7 +639,7 @@ function App() {
                   <h3 className="text-2xl font-bold text-center mb-8 gradient-text-secondary space-mono-regular">
                     {category}
                   </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
                     {categorySkills.map((skill, index) => {
                       // Cores por tecnologia
                       let iconColor = "#7D43B3";
@@ -753,7 +766,7 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 relative">
+      <section id="projects" className="py-20 relative px-2 sm:px-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold gradient-text mb-4 righteous-regular">
@@ -764,7 +777,7 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {projects.map((project, index) => (
               <div
                 key={project.title}
@@ -773,11 +786,12 @@ function App() {
                 }`}
               >
                 <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-md"
+                      style={{maxWidth: '100%', height: 'auto'}}
+                    />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   {project.status && (
                     <div className="absolute top-4 right-4 bg-accent text-background px-3 py-1 rounded-full text-sm font-semibold">
@@ -910,7 +924,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative animate-fadein">
+      <section id="contact" className="py-20 relative animate-fadein px-2 sm:px-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold gradient-text mb-4 righteous-regular">
@@ -921,7 +935,7 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold mb-6 gradient-text-secondary">
