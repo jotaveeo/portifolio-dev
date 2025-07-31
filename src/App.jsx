@@ -143,33 +143,44 @@ function App() {
 
   const projects = [
     {
+      title: "NoControle - Financeiro",
+      description:
+        "Organize, visualize, defina metas e elimine dívidas. Tudo em um só lugar, de forma simples e inteligente.",
+      image: "/nocontrole.png",
+      tech: ["TypeScript", "Node.js", "MongoDB", "Express"],
+      github: "https://github.com/jotaveeo/",
+      demo: "https://nocontrole-front.netlify.app/",
+      featured: true,
+    },
+    {
       title: "DripStore E-commerce",
       description:
         "Plataforma completa de e-commerce com frontend React e backend Node.js. Sistema de autenticação, carrinho de compras e integração com banco de dados.",
       image: "/banner1.png",
       tech: ["React", "Node.js", "MySQL", "Express", "Prisma"],
-      github: "https://github.com/jotaveeo/ProjetoDripStore-Site",
-      demo: "https://jotaveeo.github.io/portifolio-site/",
-      featured: true,
+      github: "https://github.com/jotaveeo/",
+      demo: "https://dripstore-gt.netlify.app/",
+      featured: false,
     },
     {
       title: "Memória a Dois",
       description:
         "Aplicativo de memórias compartilhadas para casais com funcionalidades de upload de fotos, timeline e notificações.",
-      image: "/banner2.png",
+      image: "/bannermemoria.png",
       tech: ["React", "Node.js", "MySQL", "Socket.io"],
       github: "#",
       demo: "#",
       status: "Em desenvolvimento",
+      featured: false,
     },
     {
       title: "ZapBot-Cobrança",
       description:
         "Robô de cobrança automatizada para WhatsApp com integração de APIs e sistema de agendamento.",
-      image: "/bannerzap.jpeg",
+      image: "/zapbot.png",
       tech: ["Node.js", "JavaScript", "WhatsApp API"],
       github: "#",
-      demo: "#",
+      demo: "https://zapbotcobranca.netlify.app/",
     },
     {
       title: "VizinhoBot-Vídeos",
@@ -387,7 +398,10 @@ function App() {
                   <span className="text-green-400">$</span>
                   <span className="text-foreground">echo $PASSION</span>
                 </div>
-                <div className="text-primary ml-3 sm:ml-4 typing-animation font-semibold inline-block" style={{whiteSpace: 'pre'}}>
+                <div
+                  className="text-primary ml-3 sm:ml-4 typing-animation font-semibold inline-block"
+                  style={{ whiteSpace: "pre" }}
+                >
                   "Transformar ideias em código que impacta vidas"
                 </div>
               </div>
@@ -403,19 +417,19 @@ function App() {
                 <span className="text-2xl sm:text-3xl lg:text-4xl font-light text-muted-foreground bree-serif-regular">
                   <span
                     className="inline-flex items-center"
-                    style={{ verticalAlign: 'middle', whiteSpace: 'pre' }}
+                    style={{ verticalAlign: "middle", whiteSpace: "pre" }}
                   >
                     {typingText}
                     <span
                       className="w-2"
                       style={{
-                        height: '1em', // altura igual ao texto
-                        background: 'var(--muted-foreground)',
+                        height: "1em", // altura igual ao texto
+                        background: "var(--muted-foreground)",
                         borderRadius: 2,
-                        marginLeft: '0.25em',
-                        display: 'inline-block',
-                        animation: 'pulse 1s infinite',
-                        verticalAlign: 'middle',
+                        marginLeft: "0.25em",
+                        display: "inline-block",
+                        animation: "pulse 1s infinite",
+                        verticalAlign: "middle",
                       }}
                     ></span>
                   </span>
@@ -786,12 +800,12 @@ function App() {
                 }`}
               >
                 <div className="relative overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-md"
-                      style={{maxWidth: '100%', height: 'auto'}}
-                    />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 rounded-md"
+                    style={{ maxWidth: "100%", height: "auto" }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   {project.status && (
                     <div className="absolute top-4 right-4 bg-accent text-background px-3 py-1 rounded-full text-sm font-semibold">
@@ -924,7 +938,10 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative animate-fadein px-2 sm:px-4">
+      <section
+        id="contact"
+        className="py-20 relative animate-fadein px-2 sm:px-4"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold gradient-text mb-4 righteous-regular">
@@ -998,7 +1015,7 @@ function App() {
                     <Github className="w-8 h-8" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/joaovitor"
+                    href="https://www.linkedin.com/in/jotaveeodev"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Linkedin className="w-8 h-8" />
