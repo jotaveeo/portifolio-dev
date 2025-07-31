@@ -209,6 +209,15 @@ function App() {
       github: "#",
       demo: "#",
     },
+    {
+      title: "DownloadVideos",
+      description:
+        "Site simples para fazer download de vídeos de diversas plataformas, podendo escolher a qualidade e o formato do arquivo.",
+      image: "/bannerdev.jpg",
+      tech: ["Node.js", "React", "Express"],
+      github: "#",
+      demo: "#",
+    },
   ];
 
   const skills = [
