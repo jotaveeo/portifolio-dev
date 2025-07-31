@@ -189,7 +189,7 @@ function App() {
       image: "/vizinhobot.png",
       tech: ["Node.js", "TikTok API", "FFmpeg"],
       github: "#",
-      demo: "#",
+      demo: "https://vizinhobot.netlify.app/",
     },
     {
       title: "WebMercado",
