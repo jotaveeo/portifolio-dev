@@ -186,7 +186,7 @@ function App() {
       title: "VizinhoBot-Vídeos",
       description:
         "Robô de postagem automatizada de vídeos para TikTok com sistema de agendamento e análise de performance.",
-      image: "/bannertik.jpg",
+      image: "/vizinhobot.png",
       tech: ["Node.js", "TikTok API", "FFmpeg"],
       github: "#",
       demo: "#",
