@@ -804,9 +804,8 @@ function App() {
             {projects.map((project, index) => (
               <div
                 key={project.title}
-                className={`card-cyberpunk overflow-hidden group ${
-                  project.featured ? "md:col-span-2 lg:col-span-2" : ""
-                }`}
+                className={`card-cyberpunk overflow-hidden group ${project.featured ? "md:col-span-2 lg:col-span-2" : ""
+                  }`}
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -1012,6 +1011,23 @@ function App() {
                   </svg>
                   Telegram
                 </a>
+                <a
+                  href="https://www.instagram.com/joaovitorroliveeira/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-3 py-1 bg-pink-500/20 text-pink-700 rounded-full font-medium hover:bg-pink-500/40 transition-colors"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm4.25 3.25a5.25 5.25 0 1 1 0 10.5a5.25 5.25 0 0 1 0-10.5Zm0 1.5a3.75 3.75 0 1 0 0 7.5a3.75 3.75 0 0 0 0-7.5Zm5.5-.25a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5Z" />
+                  </svg>
+                  Instagram
+                </a>
+
               </div>
 
               <div>
@@ -1055,11 +1071,10 @@ function App() {
                     name="from_name"
                     value={formData.from_name}
                     onChange={handleContactChange}
-                    className={`w-full px-4 py-3 bg-card border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                      formData.from_name === "" && errorMsg
+                    className={`w-full px-4 py-3 bg-card border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${formData.from_name === "" && errorMsg
                         ? "border-red-500"
                         : "border-border"
-                    }`}
+                      }`}
                     placeholder="Seu nome"
                     required
                   />
@@ -1077,11 +1092,10 @@ function App() {
                     name="email"
                     value={formData.email}
                     onChange={handleContactChange}
-                    className={`w-full px-4 py-3 bg-card border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                      formData.email === "" && errorMsg
+                    className={`w-full px-4 py-3 bg-card border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${formData.email === "" && errorMsg
                         ? "border-red-500"
                         : "border-border"
-                    }`}
+                      }`}
                     placeholder="seu@email.com"
                     required
                   />
@@ -1099,11 +1113,10 @@ function App() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleContactChange}
-                    className={`w-full px-4 py-3 bg-card border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                      formData.subject === "" && errorMsg
+                    className={`w-full px-4 py-3 bg-card border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${formData.subject === "" && errorMsg
                         ? "border-red-500"
                         : "border-border"
-                    }`}
+                      }`}
                     placeholder="Assunto da mensagem"
                     required
                   />
@@ -1121,11 +1134,10 @@ function App() {
                     value={formData.message}
                     onChange={handleContactChange}
                     rows={5}
-                    className={`w-full px-4 py-3 bg-card border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none ${
-                      formData.message === "" && errorMsg
+                    className={`w-full px-4 py-3 bg-card border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none ${formData.message === "" && errorMsg
                         ? "border-red-500"
                         : "border-border"
-                    }`}
+                      }`}
                     placeholder="Conte-me sobre seu projeto..."
                     required
                   />
