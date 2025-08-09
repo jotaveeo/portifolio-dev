@@ -1,44 +1,45 @@
 /* LINK IN BIO - Design Cyberpunk/Futurista */
 @import url('https://fonts.cdnfonts.com/css/lemon-milk');
 
-/* Variáveis de cores padronizadas */
-:root {
-  --preto: #171717;
-  --laranja-ubuntu: #F2572B;
-  --cinza-escuro: #4D4D4D;
-  --cinza-claro: #DEDEDE;
-  --branco: #ffffff;
-  
-  /* Gradientes com cores padronizadas */
-  --gradient-primary: linear-gradient(135deg, var(--cinza-escuro) 0%, var(--laranja-ubuntu) 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  --gradient-accent: linear-gradient(45deg, var(--laranja-ubuntu), var(--cinza-escuro));
-}
-
-/* Estilos isolados para a página bio */
-.bio-container * {
+/* Isolamento completo: Resetar estilos globais para a página bio */
+.bio-container,
+.bio-container *,
+.bio-container *::before,
+.bio-container *::after {
+  /* Reset completo */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: none;
+  outline: none;
+  background: unset;
+  color: unset;
+  font: unset;
+  text-decoration: none;
+  list-style: none;
 }
 
+/* Variáveis de cores isoladas APENAS para a página BIO */
 .bio-container {
-  font-family: 'Lemon Milk', 'Arial', sans-serif;
+  --bio-preto: #171717;
+  --bio-laranja-ubuntu: #F2572B;
+  --bio-cinza-escuro: #4D4D4D;
+  --bio-cinza-claro: #DEDEDE;
+  --bio-branco: #ffffff;
+  
+  /* Gradientes isolados para bio */
+  --bio-gradient-primary: linear-gradient(135deg, var(--bio-cinza-escuro) 0%, var(--bio-laranja-ubuntu) 100%);
+  --bio-gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --bio-gradient-accent: linear-gradient(45deg, var(--bio-laranja-ubuntu), var(--bio-cinza-escuro));
+  
+  /* Forçar fonte e estilos base para bio */
+  font-family: 'Lemon Milk', 'Arial', sans-serif !important;
   overflow-x: hidden;
-  background: var(--preto);
-  color: var(--branco);
-}
-
-/* Container principal da bio */
-.bio-container {
-  font-family: 'Lemon Milk', 'Arial', sans-serif;
-  overflow-x: hidden;
-  background: var(--preto);
-  color: var(--branco);
+  background: var(--bio-preto) !important;
+  color: var(--bio-branco) !important;
   min-height: 100vh;
   position: relative;
-  background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #171717 100%);
-  overflow-x: hidden;
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #171717 100%) !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,7 +76,7 @@
 .glitch-line {
   position: absolute;
   height: 2px;
-  background: var(--gradient-accent);
+  background: var(--bio-gradient-accent);
   opacity: 0.6;
   animation: glitchMove 6s linear infinite;
 }
@@ -99,7 +100,7 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: var(--laranja-ubuntu);
+  background: var(--bio-laranja-ubuntu);
   opacity: 0.8;
   animation: fragmentFloat 8s ease-in-out infinite;
 }
@@ -151,7 +152,7 @@
   left: 3px;
   right: 3px;
   bottom: 3px;
-  background: var(--preto);
+  background: var(--bio-preto);
   border-radius: 50%;
   z-index: 1;
 }
@@ -169,7 +170,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: var(--gradient-accent);
+  background: var(--bio-gradient-accent);
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -181,7 +182,7 @@
 
 .bio-subtitle {
   font-size: 1rem;
-  color: var(--cinza-claro);
+  color: var(--bio-cinza-claro);
   margin-bottom: 1rem;
   opacity: 0.9;
 }
@@ -204,7 +205,7 @@
   border: 1px solid rgba(242, 87, 43, 0.2);
   border-radius: 16px;
   text-decoration: none;
-  color: var(--branco);
+  color: var(--bio-branco);
   transition: all 0.3s ease;
   overflow: hidden;
   min-height: 70px;
@@ -227,7 +228,7 @@
 
 .bio-link:hover {
   transform: translateY(-3px);
-  border-color: var(--laranja-ubuntu);
+  border-color: var(--bio-laranja-ubuntu);
   box-shadow: 
     0 10px 30px rgba(242, 87, 43, 0.3),
     0 0 20px rgba(242, 87, 43, 0.2);
@@ -255,13 +256,13 @@
 
 .bio-link-description {
   font-size: 0.85rem;
-  color: var(--cinza-claro);
+  color: var(--bio-cinza-claro);
   opacity: 0.8;
 }
 
 .bio-link-badge {
-  background: var(--laranja-ubuntu);
-  color: var(--branco);
+  background: var(--bio-laranja-ubuntu);
+  color: var(--bio-branco);
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
   font-size: 0.75rem;
@@ -273,13 +274,13 @@
 /* Links especiais com destaque */
 .bio-link.featured {
   background: linear-gradient(135deg, rgba(242, 87, 43, 0.15), rgba(0, 0, 0, 0.8));
-  border: 2px solid var(--laranja-ubuntu);
+  border: 2px solid var(--bio-laranja-ubuntu);
   animation: featuredPulse 2s ease-in-out infinite;
 }
 
 .bio-link.urgent {
   background: linear-gradient(135deg, rgba(242, 87, 43, 0.2), rgba(0, 0, 0, 0.7));
-  border: 2px solid var(--laranja-ubuntu);
+  border: 2px solid var(--bio-laranja-ubuntu);
   animation: urgentGlow 1.5s ease-in-out infinite;
 }
 
@@ -306,20 +307,20 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: var(--branco);
+  color: var(--bio-branco);
   transition: all 0.3s ease;
   backdrop-filter: blur(15px);
 }
 
 .social-link:hover {
   transform: scale(1.1);
-  border-color: var(--laranja-ubuntu);
+  border-color: var(--bio-laranja-ubuntu);
   box-shadow: 0 0 20px rgba(242, 87, 43, 0.5);
 }
 
 .bio-footer-text {
   font-size: 0.75rem;
-  color: var(--cinza-claro);
+  color: var(--bio-cinza-claro);
   opacity: 0.7;
   margin: 0;
   padding: 0;
@@ -392,7 +393,7 @@
 
 /* Cores de texto para estatísticas */
 .bio-content .text-orange-500 {
-  color: var(--laranja-ubuntu);
+  color: var(--bio-laranja-ubuntu);
 }
 
 .bio-content .text-orange-400 {
@@ -400,15 +401,15 @@
 }
 
 .bio-content .text-gray-300 {
-  color: var(--cinza-claro);
+  color: var(--bio-cinza-claro);
 }
 
 .bio-content .text-gray-400 {
-  color: var(--cinza-escuro);
+  color: var(--bio-cinza-escuro);
 }
 
 .bio-content .text-white {
-  color: var(--branco);
+  color: var(--bio-branco);
 }
 
 /* Animações para estatísticas */
@@ -549,7 +550,7 @@
   font-family: 'Lemon Milk', Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--branco);
+  color: var(--bio-branco);
   margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
@@ -562,7 +563,7 @@
 
 .bio-content .bio-stats-subtitle {
   font-size: 0.875rem;
-  color: var(--cinza-claro);
+  color: var(--bio-cinza-claro);
   margin: 0;
   padding: 0 1rem;
 }
@@ -792,7 +793,7 @@
 
 .bio-content .bio-stats-footer-text {
   font-size: 0.875rem;
-  color: var(--cinza-claro);
+  color: var(--bio-cinza-claro);
   margin: 0;
   display: flex;
   align-items: center;
