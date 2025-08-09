@@ -1,0 +1,964 @@
+/* LINK IN BIO - Design Cyberpunk/Futurista */
+@import url('https://fonts.cdnfonts.com/css/lemon-milk');
+
+/* Variáveis de cores padronizadas */
+:root {
+  --preto: #171717;
+  --laranja-ubuntu: #F2572B;
+  --cinza-escuro: #4D4D4D;
+  --cinza-claro: #DEDEDE;
+  --branco: #ffffff;
+  
+  /* Gradientes com cores padronizadas */
+  --gradient-primary: linear-gradient(135deg, var(--cinza-escuro) 0%, var(--laranja-ubuntu) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --gradient-accent: linear-gradient(45deg, var(--laranja-ubuntu), var(--cinza-escuro));
+}
+
+/* Estilos isolados para a página bio */
+.bio-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bio-container {
+  font-family: 'Lemon Milk', 'Arial', sans-serif;
+  overflow-x: hidden;
+  background: var(--preto);
+  color: var(--branco);
+}
+
+/* Container principal da bio */
+.bio-container {
+  font-family: 'Lemon Milk', 'Arial', sans-serif;
+  overflow-x: hidden;
+  background: var(--preto);
+  color: var(--branco);
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #171717 100%);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+/* Fundo dinâmico com elementos glitch */
+.bio-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(242, 87, 43, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(77, 77, 77, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(242, 87, 43, 0.03) 0%, transparent 50%);
+  z-index: 1;
+  animation: glitchPulse 4s ease-in-out infinite;
+}
+
+/* Elementos glitch decorativos */
+.glitch-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glitch-line {
+  position: absolute;
+  height: 2px;
+  background: var(--gradient-accent);
+  opacity: 0.6;
+  animation: glitchMove 6s linear infinite;
+}
+
+.glitch-line:nth-child(1) { top: 20%; width: 30%; left: 10%; animation-delay: 0s; }
+.glitch-line:nth-child(2) { top: 45%; width: 25%; right: 15%; animation-delay: 2s; }
+.glitch-line:nth-child(3) { top: 70%; width: 40%; left: 20%; animation-delay: 4s; }
+
+/* Fragmentos digitais */
+.digital-fragments {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fragment {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--laranja-ubuntu);
+  opacity: 0.8;
+  animation: fragmentFloat 8s ease-in-out infinite;
+}
+
+.fragment:nth-child(1) { top: 15%; left: 25%; animation-delay: 0s; }
+.fragment:nth-child(2) { top: 35%; right: 30%; animation-delay: 2s; }
+.fragment:nth-child(3) { top: 55%; left: 15%; animation-delay: 4s; }
+.fragment:nth-child(4) { top: 75%; right: 20%; animation-delay: 6s; }
+
+/* Container de conteúdo principal */
+.bio-content {
+  position: relative;
+  z-index: 10;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Header com avatar e info */
+.bio-header {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.bio-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  position: relative;
+  overflow: hidden;
+  padding: 3px;
+  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+  background-size: 300% 300%;
+  animation: instagramGradient 3s ease-in-out infinite;
+  box-shadow: 
+    0 0 30px rgba(249, 206, 52, 0.4),
+    0 0 50px rgba(238, 42, 123, 0.3),
+    0 0 70px rgba(98, 40, 215, 0.2);
+}
+
+.bio-avatar::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  background: var(--preto);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.bio-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.bio-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: var(--gradient-accent);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease-in-out infinite;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.bio-subtitle {
+  font-size: 1rem;
+  color: var(--cinza-claro);
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+/* Links principais */
+.bio-links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bio-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(23, 23, 23, 0.4) 100%);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(242, 87, 43, 0.2);
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--branco);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  min-height: 70px;
+}
+
+.bio-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.bio-link:hover::before {
+  left: 100%;
+}
+
+.bio-link:hover {
+  transform: translateY(-3px);
+  border-color: var(--laranja-ubuntu);
+  box-shadow: 
+    0 10px 30px rgba(242, 87, 43, 0.3),
+    0 0 20px rgba(242, 87, 43, 0.2);
+}
+
+.bio-link-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.bio-link-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bio-link-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.bio-link-description {
+  font-size: 0.85rem;
+  color: var(--cinza-claro);
+  opacity: 0.8;
+}
+
+.bio-link-badge {
+  background: var(--laranja-ubuntu);
+  color: var(--branco);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 1rem;
+  box-shadow: 0 0 15px rgba(242, 87, 43, 0.5);
+}
+
+/* Links especiais com destaque */
+.bio-link.featured {
+  background: linear-gradient(135deg, rgba(242, 87, 43, 0.15), rgba(0, 0, 0, 0.8));
+  border: 2px solid var(--laranja-ubuntu);
+  animation: featuredPulse 2s ease-in-out infinite;
+}
+
+.bio-link.urgent {
+  background: linear-gradient(135deg, rgba(242, 87, 43, 0.2), rgba(0, 0, 0, 0.7));
+  border: 2px solid var(--laranja-ubuntu);
+  animation: urgentGlow 1.5s ease-in-out infinite;
+}
+
+/* Footer com redes sociais */
+.bio-footer {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.social-link {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(23, 23, 23, 0.5) 100%);
+  border: 1px solid rgba(242, 87, 43, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--branco);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+  border-color: var(--laranja-ubuntu);
+  box-shadow: 0 0 20px rgba(242, 87, 43, 0.5);
+}
+
+.bio-footer-text {
+  font-size: 0.75rem;
+  color: var(--cinza-claro);
+  opacity: 0.7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos específicos para BioStats */
+.bio-content .my-10 {
+  margin: 2rem 0;
+}
+
+/* Ajustes para grid de estatísticas */
+.bio-content .grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.bio-content .grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Ajustes para motion components dentro da bio */
+.bio-content .relative.group {
+  position: relative;
+}
+
+/* Garantir que gradientes funcionem no contexto da bio */
+.bio-content .bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.bio-content .from-orange-500 {
+  --tw-gradient-from: #f97316;
+  --tw-gradient-to: rgb(249 115 22 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.bio-content .to-gray-600 {
+  --tw-gradient-to: #4b5563;
+}
+
+.bio-content .from-gray-500 {
+  --tw-gradient-from: #6b7280;
+  --tw-gradient-to: rgb(107 114 128 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.bio-content .to-gray-700 {
+  --tw-gradient-to: #374151;
+}
+
+.bio-content .from-gray-600 {
+  --tw-gradient-from: #4b5563;
+  --tw-gradient-to: rgb(75 85 99 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.bio-content .to-gray-800 {
+  --tw-gradient-to: #1f2937;
+}
+
+.bio-content .from-orange-400 {
+  --tw-gradient-from: #fb923c;
+  --tw-gradient-to: rgb(251 146 60 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.bio-content .to-orange-600 {
+  --tw-gradient-to: #ea580c;
+}
+
+/* Cores de texto para estatísticas */
+.bio-content .text-orange-500 {
+  color: var(--laranja-ubuntu);
+}
+
+.bio-content .text-orange-400 {
+  color: #fb923c;
+}
+
+.bio-content .text-gray-300 {
+  color: var(--cinza-claro);
+}
+
+.bio-content .text-gray-400 {
+  color: var(--cinza-escuro);
+}
+
+.bio-content .text-white {
+  color: var(--branco);
+}
+
+/* Animações para estatísticas */
+.bio-content .animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.bio-content .animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+.bio-content .animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.bio-content .animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animações */
+@keyframes glitchPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes glitchMove {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+
+@keyframes fragmentFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+  50% { transform: translateY(-20px) rotate(180deg); opacity: 0.4; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes featuredPulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(242, 87, 43, 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(242, 87, 43, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes urgentGlow {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(242, 87, 43, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(242, 87, 43, 0.8);
+  }
+}
+
+@keyframes instagramGradient {
+  0% { 
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  33% { 
+    background-position: 50% 0%;
+    filter: hue-rotate(5deg);
+  }
+  66% { 
+    background-position: 100% 50%;
+    filter: hue-rotate(-5deg);
+  }
+  100% { 
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* ==============================================
+   BIOSTATS INTEGRATION STYLES
+   ============================================== */
+
+/* Container do BioStats */
+.bio-content .bio-stats-container {
+  margin: 1.5rem 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+/* Header das estatísticas */
+.bio-content .bio-stats-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bio-content .bio-stats-title {
+  font-family: 'Lemon Milk', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--branco);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.bio-content .bio-stats-subtitle {
+  font-size: 0.875rem;
+  color: var(--cinza-claro);
+  margin: 0;
+  padding: 0 1rem;
+}
+
+/* Grid das estatísticas */
+.bio-content .bio-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 0;
+}
+
+/* Cards individuais */
+.bio-content .bio-stat-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  padding: 1.25rem;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card específico: Projetos (laranja) */
+.bio-content .bio-stat-card:nth-child(1) {
+  background: linear-gradient(135deg, #F2572B 0%, #D4401F 100%);
+  border-color: rgba(242, 87, 43, 0.5);
+}
+
+/* Card específico: Commits (roxo/azul) */
+.bio-content .bio-stat-card:nth-child(2) {
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* Card específico: Anos Exp. (cinza escuro) */
+.bio-content .bio-stat-card:nth-child(3) {
+  background: linear-gradient(135deg, #374151 0%, #1F2937 100%);
+  border-color: rgba(55, 65, 81, 0.5);
+}
+
+/* Card específico: Cafés (laranja claro) */
+.bio-content .bio-stat-card:nth-child(4) {
+  background: linear-gradient(135deg, #FB923C 0%, #F97316 100%);
+  border-color: rgba(251, 146, 60, 0.5);
+}
+
+.bio-content .bio-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover específico para cada card */
+.bio-content .bio-stat-card:nth-child(1):hover {
+  box-shadow: 0 8px 25px rgba(242, 87, 43, 0.4);
+}
+
+.bio-content .bio-stat-card:nth-child(2):hover {
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.bio-content .bio-stat-card:nth-child(3):hover {
+  box-shadow: 0 8px 25px rgba(55, 65, 81, 0.4);
+}
+
+.bio-content .bio-stat-card:nth-child(4):hover {
+  box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4);
+}
+
+/* Efeito glitch nos cards */
+.bio-content .bio-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+/* Glitch específico para cada card */
+.bio-content .bio-stat-card:nth-child(1)::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%
+  );
+}
+
+.bio-content .bio-stat-card:nth-child(2)::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%
+  );
+}
+
+.bio-content .bio-stat-card:nth-child(3)::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(209, 213, 219, 0.1) 50%, 
+    transparent 100%
+  );
+}
+
+.bio-content .bio-stat-card:nth-child(4)::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%
+  );
+}
+
+.bio-content .bio-stat-card:hover::before {
+  left: 100%;
+}
+
+/* Conteúdo do card */
+.bio-content .bio-stat-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Ícone */
+.bio-content .bio-stat-icon {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Ícone específico para cada card */
+.bio-content .bio-stat-card:nth-child(1) .bio-stat-icon {
+  color: #FFF;
+}
+
+.bio-content .bio-stat-card:nth-child(2) .bio-stat-icon {
+  color: #FFF;
+}
+
+.bio-content .bio-stat-card:nth-child(3) .bio-stat-icon {
+  color: #D1D5DB;
+}
+
+.bio-content .bio-stat-card:nth-child(4) .bio-stat-icon {
+  color: #FFF;
+}
+
+/* Número principal */
+.bio-content .bio-stat-number {
+  font-family: 'Lemon Milk', Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+  color: #FFF;
+}
+
+/* Label */
+.bio-content .bio-stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #FFF;
+  opacity: 0.9;
+}
+
+/* Descrição */
+.bio-content .bio-stat-description {
+  font-size: 0.625rem;
+  margin: 0;
+  color: #FFF;
+  opacity: 0.7;
+}
+
+/* Indicador pulse */
+.bio-content .bio-stat-pulse {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  opacity: 0.8;
+}
+
+/* Pulse específico para cada card */
+.bio-content .bio-stat-card:nth-child(1) .bio-stat-pulse {
+  background: #FFF;
+}
+
+.bio-content .bio-stat-card:nth-child(2) .bio-stat-pulse {
+  background: #FFF;
+}
+
+.bio-content .bio-stat-card:nth-child(3) .bio-stat-pulse {
+  background: #D1D5DB;
+}
+
+.bio-content .bio-stat-card:nth-child(4) .bio-stat-pulse {
+  background: #FFF;
+}
+
+/* Footer das estatísticas */
+.bio-content .bio-stats-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.6) 0%, 
+    rgba(23, 23, 23, 0.4) 100%
+  );
+  border: 1px solid rgba(242, 87, 43, 0.3);
+  backdrop-filter: blur(15px);
+}
+
+.bio-content .bio-stats-footer-text {
+  font-size: 0.875rem;
+  color: var(--cinza-claro);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Animação pulse */
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 0.8; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.4; 
+    transform: scale(1.2); 
+  }
+}
+
+/* Responsividade mobile-first */
+@media (max-width: 480px) {
+  .bio-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .bio-content {
+    max-width: 350px;
+    gap: 0.75rem;
+  }
+  
+  .bio-avatar {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .bio-title {
+    font-size: 1.75rem;
+    white-space: nowrap;
+  }
+  
+  .bio-link {
+    padding: 0.875rem 1.25rem;
+    min-height: 60px;
+  }
+  
+  .bio-link-title {
+    font-size: 1rem;
+  }
+  
+  .bio-link-description {
+    font-size: 0.8rem;
+  }
+  
+  .bio-footer {
+    margin-top: 0.25rem;
+  }
+  
+  .social-links {
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .bio-footer-text {
+    font-size: 0.7rem;
+  }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 320px) {
+  .bio-content {
+    max-width: 300px;
+  }
+  
+  .bio-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .bio-title {
+    font-size: 1.5rem;
+    white-space: nowrap;
+  }
+  
+  .bio-link {
+    padding: 0.75rem 1rem;
+    min-height: 55px;
+  }
+  
+  .bio-content .bio-stat-card {
+    padding: 0.875rem;
+    min-height: 90px;
+  }
+  
+  .bio-content .bio-stat-number {
+    font-size: 1.25rem;
+  }
+  
+  .bio-content .bio-stats-title {
+    font-size: 0.875rem;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+  
+  .social-link {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .bio-footer-text {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bio-content .grid-cols-2 {
+    gap: 0.75rem;
+  }
+  
+  .bio-content .my-10 {
+    margin: 1.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .bio-content .bio-stats-container {
+    margin: 2rem 0;
+  }
+  
+  .bio-content .bio-stats-grid {
+    gap: 0.75rem;
+  }
+  
+  .bio-content .bio-stat-card {
+    padding: 1rem;
+    min-height: 100px;
+  }
+  
+  .bio-content .bio-stats-title {
+    font-size: 1rem;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+  
+  .bio-content .bio-stat-number {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .bio-content .bio-stat-card {
+    padding: 0.875rem;
+    min-height: 90px;
+  }
+  
+  .bio-content .bio-stat-number {
+    font-size: 1.25rem;
+  }
+  
+  .bio-content .bio-stats-title {
+    font-size: 0.875rem;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+}

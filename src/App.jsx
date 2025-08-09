@@ -152,6 +152,18 @@ function App() {
       demo: "https://nocontrole-front.netlify.app/",
       featured: true,
     },
+        {
+      title: "Link in Bio Interativo",
+      description:
+        "Página personalizada com links para redes sociais, projetos e contatos. Design moderno com animações e estatísticas dinâmicas.",
+      image: "/banner2.png",
+      tech: ["React", "Framer Motion", "Tailwind CSS"],
+      github: "https://github.com/jotaveeo/",
+      demo: "/bio",
+      // featured: true,
+      // isInternal: true,
+      // badge: "🔗 Bio"
+    },
     {
       title: "DripStore E-commerce",
       description:
