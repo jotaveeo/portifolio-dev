@@ -28,6 +28,12 @@ import {
   FaGit,
   FaAws,
   FaJava,
+  FaLinux,
+  FaWindows,
+  FaServer,
+  FaCloud,
+  FaCss3Alt,
+  FaGithub,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -43,6 +49,15 @@ import {
   SiPostman,
   SiFigma,
   SiNpm,
+  SiPostgresql,
+  SiMongodb,
+  SiSqlite,
+  SiVercel,
+  SiNetlify,
+  SiNginx,
+  SiApache,
+  SiGraphql,
+  SiSass,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
@@ -378,34 +393,217 @@ function App() {
   ];
 
   const skills = [
-    { name: "HTML", category: "Frontend", icon: <FaHtml5 /> },
-    { name: "JavaScript", category: "Frontend", icon: <FaJs /> },
-    { name: "TypeScript", category: "Frontend", icon: <SiTypescript /> },
-    { name: "React", category: "Frontend", icon: <FaReact /> },
-    { name: "Next.js", category: "Frontend", icon: <SiNextdotjs /> },
-    { name: "Tailwind CSS", category: "Frontend", icon: <SiTailwindcss /> },
-    { name: "Node.js", category: "Backend", icon: <FaNodeJs /> },
-    { name: "Express", category: "Backend", icon: <SiExpress /> },
-    { name: "Sequelize", category: "Backend", icon: <SiSequelize /> },
-    { name: "MySQL", category: "Backend", icon: <SiMysql /> },
-    { name: "MariaDB", category: "Backend", icon: <SiMariadb /> },
-    { name: "Prisma ORM", category: "Backend", icon: <SiPrisma /> },
-    { name: "Python", category: "Backend", icon: <FaPython /> },
-    { name: "Git", category: "Tools", icon: <FaGit /> },
-    { name: "AWS", category: "Tools", icon: <FaAws /> },
-    { name: "Jest", category: "Tools", icon: <SiJest /> },
-    { name: "Docker", category: "Tools", icon: <SiDocker /> },
-    { name: "VS Code", category: "Tools", icon: <VscVscode /> },
-    { name: "Postman", category: "Tools", icon: <SiPostman /> },
-    { name: "Figma", category: "Tools", icon: <SiFigma /> },
-    { name: "NPM", category: "Tools", icon: <SiNpm /> },
-    { name: "Java", category: "Backend", icon: <FaJava /> },
+    // Linguagens
+    {
+      name: "JavaScript",
+      category: "Linguagens",
+      icon: <FaJs />,
+      color: "#F7DF1E",
+    },
+    {
+      name: "TypeScript",
+      category: "Linguagens",
+      icon: <SiTypescript />,
+      color: "#3178C6",
+    },
+    // { name: "Python", category: "Linguagens", icon: <FaPython />, color: "#3776AB" },
+    {
+      name: "Java",
+      category: "Linguagens",
+      icon: <FaJava />,
+      color: "#007396",
+    },
+
+    // Frontend
+    {
+      name: "React",
+      category: "Frontend",
+      icon: <FaReact />,
+      color: "#61DAFB",
+    },
+    {
+      name: "Next.js",
+      category: "Frontend",
+      icon: <SiNextdotjs />,
+      color: "#000000",
+    },
+    {
+      name: "HTML5",
+      category: "Frontend",
+      icon: <FaHtml5 />,
+      color: "#E34F26",
+    },
+    {
+      name: "CSS3",
+      category: "Frontend",
+      icon: <FaCss3Alt />,
+      color: "#1572B6",
+    },
+    {
+      name: "Tailwind CSS",
+      category: "Frontend",
+      icon: <SiTailwindcss />,
+      color: "#06B6D4",
+    },
+    // { name: "Sass", category: "Frontend", icon: <SiSass />, color: "#CC6699" },
+
+    // Backend & APIs
+    {
+      name: "Node.js",
+      category: "Backend & APIs",
+      icon: <FaNodeJs />,
+      color: "#339933",
+    },
+    {
+      name: "Express.js",
+      category: "Backend & APIs",
+      icon: <SiExpress />,
+      color: "#000000",
+    },
+    {
+      name: "RESTful APIs",
+      category: "Backend & APIs",
+      icon: <FaServer />,
+      color: "#FF6C37",
+    },
+    // { name: "GraphQL", category: "Backend & APIs", icon: <SiGraphql />, color: "#E10098" },
+    {
+      name: "Prisma ORM",
+      category: "Backend & APIs",
+      icon: <SiPrisma />,
+      color: "#2D3748",
+    },
+    {
+      name: "Sequelize",
+      category: "Backend & APIs",
+      icon: <SiSequelize />,
+      color: "#52B0E7",
+    },
+
+    // Banco de Dados
+    {
+      name: "MySQL",
+      category: "Banco de Dados",
+      icon: <SiMysql />,
+      color: "#4479A1",
+    },
+    {
+      name: "PostgreSQL",
+      category: "Banco de Dados",
+      icon: <SiPostgresql />,
+      color: "#336791",
+    },
+    {
+      name: "MongoDB",
+      category: "Banco de Dados",
+      icon: <SiMongodb />,
+      color: "#47A248",
+    },
+    {
+      name: "MariaDB",
+      category: "Banco de Dados",
+      icon: <SiMariadb />,
+      color: "#003545",
+    },
+    {
+      name: "SQLite",
+      category: "Banco de Dados",
+      icon: <SiSqlite />,
+      color: "#003B57",
+    },
+
+    // Ferramentas & DevOps
+    {
+      name: "Git",
+      category: "Ferramentas & DevOps",
+      icon: <FaGit />,
+      color: "#F05032",
+    },
+    {
+      name: "GitHub",
+      category: "Ferramentas & DevOps",
+      icon: <FaGithub />,
+      color: "#181717",
+    },
+    {
+      name: "Docker",
+      category: "Ferramentas & DevOps",
+      icon: <SiDocker />,
+      color: "#2496ED",
+    },
+    // { name: "AWS", category: "Ferramentas & DevOps", icon: <FaAws />, color: "#FF9900" },
+    // { name: "Vercel", category: "Ferramentas & DevOps", icon: <SiVercel />, color: "#000000" },
+    {
+      name: "Netlify",
+      category: "Ferramentas & DevOps",
+      icon: <SiNetlify />,
+      color: "#00C7B7",
+    },
+    {
+      name: "Jest",
+      category: "Ferramentas & DevOps",
+      icon: <SiJest />,
+      color: "#C21325",
+    },
+    {
+      name: "Postman",
+      category: "Ferramentas & DevOps",
+      icon: <SiPostman />,
+      color: "#FF6C37",
+    },
+    {
+      name: "VS Code",
+      category: "Ferramentas & DevOps",
+      icon: <VscVscode />,
+      color: "#007ACC",
+    },
+    {
+      name: "NPM",
+      category: "Ferramentas & DevOps",
+      icon: <SiNpm />,
+      color: "#CB3837",
+    },
+
+    // Suporte & Infraestrutura
+    {
+      name: "Linux",
+      category: "Suporte & Infraestrutura",
+      icon: <FaLinux />,
+      color: "#FCC624",
+    },
+    // { name: "Windows Server", category: "Suporte & Infraestrutura", icon: <FaWindows />, color: "#0078D6" },
+    // { name: "Nginx", category: "Suporte & Infraestrutura", icon: <SiNginx />, color: "#009639" },
+    // { name: "Apache", category: "Suporte & Infraestrutura", icon: <SiApache />, color: "#D22128" },
+    // { name: "VPS", category: "Suporte & Infraestrutura", icon: <FaServer />, color: "#5865F2" },
+    {
+      name: "Cloud",
+      category: "Suporte & Infraestrutura",
+      icon: <FaCloud />,
+      color: "#4285F4",
+    },
+    {
+      name: "Figma",
+      category: "Suporte & Infraestrutura",
+      icon: <SiFigma />,
+      color: "#F24E1E",
+    },
   ];
 
   const skillCategories = {
+    Linguagens: skills.filter((skill) => skill.category === "Linguagens"),
     Frontend: skills.filter((skill) => skill.category === "Frontend"),
-    Backend: skills.filter((skill) => skill.category === "Backend"),
-    Tools: skills.filter((skill) => skill.category === "Tools"),
+    "Backend & APIs": skills.filter(
+      (skill) => skill.category === "Backend & APIs"
+    ),
+    "Banco de Dados": skills.filter(
+      (skill) => skill.category === "Banco de Dados"
+    ),
+    "Ferramentas & DevOps": skills.filter(
+      (skill) => skill.category === "Ferramentas & DevOps"
+    ),
+    "Suporte & Infraestrutura": skills.filter(
+      (skill) => skill.category === "Suporte & Infraestrutura"
+    ),
   };
 
   return (
@@ -494,16 +692,82 @@ function App() {
           <div className="absolute top-1/4 left-1/4 w-32 sm:w-64 h-32 sm:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-24 sm:w-48 h-24 sm:h-48 bg-accent/10 rounded-full blur-2xl floating-animation"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-96 h-48 sm:h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+          
           {/* Scanlines overlay */}
           <div className="absolute inset-0 opacity-10 bg-[repeating-linear-gradient(180deg,transparent,transparent_6px,#fff1_7px,transparent_8px)]"></div>
-          {/* Partículas simples */}
+          
+          {/* Partículas animadas - Superior esquerdo */}
           <div
             className="absolute left-10 top-10 w-2 h-2 bg-primary/40 rounded-full animate-ping"
             style={{ animationDuration: "2.5s" }}
           ></div>
           <div
+            className="absolute left-32 top-24 w-1.5 h-1.5 bg-accent/50 rounded-full animate-ping"
+            style={{ animationDuration: "3s", animationDelay: "0.5s" }}
+          ></div>
+          <div
+            className="absolute left-20 top-40 w-1 h-1 bg-pink-500/40 rounded-full animate-ping"
+            style={{ animationDuration: "2.8s", animationDelay: "1s" }}
+          ></div>
+          
+          {/* Partículas animadas - Superior direito */}
+          <div
+            className="absolute right-16 top-20 w-2 h-2 bg-accent/40 rounded-full animate-ping"
+            style={{ animationDuration: "3.5s", animationDelay: "0.3s" }}
+          ></div>
+          <div
+            className="absolute right-32 top-32 w-1.5 h-1.5 bg-primary/50 rounded-full animate-ping"
+            style={{ animationDuration: "2.7s", animationDelay: "0.8s" }}
+          ></div>
+          <div
+            className="absolute right-48 top-16 w-1 h-1 bg-yellow-400/40 rounded-full animate-ping"
+            style={{ animationDuration: "3.2s", animationDelay: "1.2s" }}
+          ></div>
+          
+          {/* Partículas animadas - Inferior esquerdo */}
+          <div
+            className="absolute left-24 bottom-32 w-2 h-2 bg-green-400/40 rounded-full animate-ping"
+            style={{ animationDuration: "2.9s", animationDelay: "0.6s" }}
+          ></div>
+          <div
+            className="absolute left-40 bottom-20 w-1.5 h-1.5 bg-pink-500/50 rounded-full animate-ping"
+            style={{ animationDuration: "3.3s", animationDelay: "1.1s" }}
+          ></div>
+          <div
+            className="absolute left-16 bottom-48 w-1 h-1 bg-accent/40 rounded-full animate-ping"
+            style={{ animationDuration: "2.6s", animationDelay: "0.4s" }}
+          ></div>
+          
+          {/* Partículas animadas - Inferior direito */}
+          <div
             className="absolute right-16 bottom-16 w-1.5 h-1.5 bg-accent/40 rounded-full animate-ping"
             style={{ animationDuration: "3.2s" }}
+          ></div>
+          <div
+            className="absolute right-28 bottom-28 w-2 h-2 bg-primary/50 rounded-full animate-ping"
+            style={{ animationDuration: "2.4s", animationDelay: "0.7s" }}
+          ></div>
+          <div
+            className="absolute right-40 bottom-40 w-1 h-1 bg-yellow-400/40 rounded-full animate-ping"
+            style={{ animationDuration: "3.1s", animationDelay: "0.9s" }}
+          ></div>
+          
+          {/* Partículas animadas - Centro */}
+          <div
+            className="absolute left-1/4 top-1/3 w-1.5 h-1.5 bg-accent/30 rounded-full animate-ping"
+            style={{ animationDuration: "3.4s", animationDelay: "1.5s" }}
+          ></div>
+          <div
+            className="absolute right-1/3 top-1/4 w-1 h-1 bg-primary/30 rounded-full animate-ping"
+            style={{ animationDuration: "2.8s", animationDelay: "0.2s" }}
+          ></div>
+          <div
+            className="absolute left-1/3 bottom-1/3 w-1.5 h-1.5 bg-pink-500/30 rounded-full animate-ping"
+            style={{ animationDuration: "3s", animationDelay: "1.3s" }}
+          ></div>
+          <div
+            className="absolute right-1/4 bottom-1/4 w-1 h-1 bg-green-400/30 rounded-full animate-ping"
+            style={{ animationDuration: "2.7s", animationDelay: "0.5s" }}
           ></div>
         </div>
 
@@ -693,11 +957,10 @@ function App() {
                   Prazer, me chamo João! 👨🏽‍💻
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Com mais de 6 anos de experiência em tecnologias, sou
-                  apaixonado por criar soluções que fazem a diferença. Minha
-                  jornada começou com curiosidade pela tecnologia e se
-                  transformou em uma carreira dedicada à excelência no
-                  desenvolvimento de software.
+                  Com anos de vivência em tecnologias, sou apaixonado por criar
+                  soluções que fazem a diferença. Minha jornada começou com
+                  curiosidade pela tecnologia e se transformou em uma carreira
+                  dedicada à excelência no desenvolvimento de software.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Um desenvolvedor dedicado e sempre em busca de novos desafios
@@ -769,6 +1032,211 @@ function App() {
                   </span>
                 </div>
               </div>
+
+              {/* Certificates Section */}
+              <div className="mt-8">
+                <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
+                  <svg
+                    className="w-6 h-6 text-accent"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                  Certificações & Conquistas
+                </h3>
+                <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                  {/* Certificate 1 - Destaque */}
+                  <div className="group relative card-cyberpunk p-4 hover:border-yellow-500/50 transition-all cursor-pointer bg-yellow-500/5">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors flex-shrink-0">
+                        <svg
+                          className="w-6 h-6 text-yellow-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground group-hover:text-yellow-500 transition-colors">
+                          🏆 Top 10 Melhores Alunos - Full Stack
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Geração Tech • Dez 2024
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Certificate 2 */}
+                  <div className="group relative card-cyberpunk p-4 hover:border-primary/50 transition-all cursor-pointer">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors flex-shrink-0">
+                        <svg
+                          className="w-6 h-6 text-primary"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                          Desenvolvedor Full Stack
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Geração Tech • Dez 2024
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Certificate 3 */}
+                  <div className="group relative card-cyberpunk p-4 hover:border-accent/50 transition-all cursor-pointer">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors flex-shrink-0">
+                        <svg
+                          className="w-6 h-6 text-accent"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground group-hover:text-accent transition-colors">
+                          O-HACKA-TA-ON 3ª Edição
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          UNIFOR + M. Dias Branco • Jun 2025
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Certificate 4 */}
+                  <div className="group relative card-cyberpunk p-4 hover:border-pink-500/50 transition-all cursor-pointer">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center group-hover:bg-pink-500/30 transition-colors flex-shrink-0">
+                        <svg
+                          className="w-6 h-6 text-pink-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground group-hover:text-pink-500 transition-colors">
+                          Introdução a UX/UI Design
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          CITINOVA • Mai 2025
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Certificate 5 */}
+                  <div className="group relative card-cyberpunk p-4 hover:border-green-500/50 transition-all cursor-pointer">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center group-hover:bg-green-500/30 transition-colors flex-shrink-0">
+                        <svg
+                          className="w-6 h-6 text-green-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground group-hover:text-green-500 transition-colors">
+                          Siará Tech Summit 2024
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Sebrae • Nov 2024
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Certificate 6 */}
+                  <div className="group relative card-cyberpunk p-4 hover:border-blue-500/50 transition-all cursor-pointer">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors flex-shrink-0">
+                        <svg
+                          className="w-6 h-6 text-blue-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground group-hover:text-blue-500 transition-colors">
+                          Bootcamp Bradesco - Java e QA
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          DIO • Nov 2025
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Certificate 7 */}
+                  <div className="group relative card-cyberpunk p-4 hover:border-orange-500/50 transition-all cursor-pointer">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center group-hover:bg-orange-500/30 transition-colors flex-shrink-0">
+                        <svg
+                          className="w-6 h-6 text-orange-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground group-hover:text-orange-500 transition-colors">
+                          Versionamento com Git e GitHub
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          DIO • Nov 2025
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Certificate 8 */}
+                  <div className="group relative card-cyberpunk p-4 hover:border-purple-500/50 transition-all cursor-pointer">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition-colors flex-shrink-0">
+                        <svg
+                          className="w-6 h-6 text-purple-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground group-hover:text-purple-500 transition-colors">
+                          Portfólio de Dados em 2 Dias
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          EBAC • Nov 2025
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2 sm:gap-4">
@@ -806,142 +1274,81 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold gradient-text mb-4 righteous-regular">
-              Habilidades
+              Stack Tecnológica
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto bree-serif-regular">
-              Tecnologias e ferramentas que domino
+              Tecnologias, ferramentas e infraestrutura que utilizo no dia a dia
             </p>
           </div>
 
           <div className="space-y-12">
             {Object.entries(skillCategories).map(
               ([category, categorySkills]) => (
-                <div key={category}>
-                  <h3 className="text-2xl font-bold text-center mb-8 gradient-text-secondary space-mono-regular">
-                    {category}
-                  </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
-                    {categorySkills.map((skill, index) => {
-                      // Cores por tecnologia
-                      let iconColor = "#7D43B3";
-                      let tooltip = "";
-                      switch (skill.name) {
-                        case "HTML":
-                          iconColor = "#E44D26";
-                          tooltip = "Linguagem de marcação para web";
-                          break;
-                        case "JavaScript":
-                          iconColor = "#F7DF1E";
-                          tooltip = "Linguagem de programação dinâmica";
-                          break;
-                        case "TypeScript":
-                          iconColor = "#3178C6";
-                          tooltip = "JavaScript tipado";
-                          break;
-                        case "React":
-                          iconColor = "#61DAFB";
-                          tooltip = "Biblioteca para interfaces";
-                          break;
-                        case "Next.js":
-                          iconColor = "#000";
-                          tooltip = "Framework React SSR";
-                          break;
-                        case "Tailwind CSS":
-                          iconColor = "#38BDF8";
-                          tooltip = "Framework CSS utilitário";
-                          break;
-                        case "Node.js":
-                          iconColor = "#339933";
-                          tooltip = "JavaScript no backend";
-                          break;
-                        case "Java":
-                          iconColor = "#007396";
-                          tooltip = "Linguagem de programação";
-                          break;
-                        case "Express":
-                          iconColor = "#000";
-                          tooltip = "Framework Node.js";
-                          break;
-                        case "MySQL":
-                          iconColor = "#00758F";
-                          tooltip = "Banco de dados relacional";
-                          break;
-                        case "MariaDB":
-                          iconColor = "#003545";
-                          tooltip = "Banco de dados relacional";
-                          break;
-                        case "Prisma ORM":
-                          iconColor = "#0C344B";
-                          tooltip = "ORM para Node.js";
-                          break;
-                        case "Python":
-                          iconColor = "#3776AB";
-                          tooltip = "Linguagem de programação";
-                          break;
-                        case "Git":
-                          iconColor = "#F05032";
-                          tooltip = "Controle de versão";
-                          break;
-                        case "AWS":
-                          iconColor = "#FF9900";
-                          tooltip = "Serviços em nuvem";
-                          break;
-                        case "Jest":
-                          iconColor = "#C21325";
-                          tooltip = "Testes automatizados";
-                          break;
-                        case "Docker":
-                          iconColor = "#2496ED";
-                          tooltip = "Containerização";
-                          break;
-                        case "VS Code":
-                          iconColor = "#007ACC";
-                          tooltip = "Editor de código";
-                          break;
-                        case "Postman":
-                          iconColor = "#FF6C37";
-                          tooltip = "Testes de API";
-                          break;
-                        case "Figma":
-                          iconColor = "#F24E1E";
-                          tooltip = "Design UI/UX";
-                          break;
-                        case "NPM":
-                          iconColor = "#CB3837";
-                          tooltip = "Gerenciador de pacotes";
-                          break;
-                        default:
-                          iconColor = "#7D43B3";
-                          tooltip = skill.name;
-                      }
-                      return (
+                <div key={category} className="relative">
+                  {/* Category Header */}
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+                    <h3 className="text-xl sm:text-2xl font-bold gradient-text-secondary space-mono-regular px-4 py-2 rounded-lg bg-card/50 border border-border/50">
+                      {category}
+                    </h3>
+                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+                  </div>
+
+                  {/* Skills Grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+                    {categorySkills.map((skill, index) => (
+                      <div key={skill.name} className="group relative">
                         <div
-                          key={skill.name}
-                          className="card-cyberpunk p-6 text-center group cursor-pointer relative focus:outline-none focus:ring-2 focus:ring-primary animate-fadein"
+                          className="card-cyberpunk p-5 text-center cursor-pointer transition-all hover:border-primary/50 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary animate-fadein"
                           tabIndex={0}
                           aria-label={skill.name}
-                          style={{ animationDelay: `${index * 0.1}s` }}
+                          style={{
+                            animationDelay: `${index * 0.05}s`,
+                            borderColor: `${skill.color}20`,
+                          }}
                         >
+                          {/* Icon with dynamic color */}
                           <div className="mb-3 flex justify-center">
                             {React.cloneElement(skill.icon, {
                               style: {
-                                color: iconColor,
-                                transition: "color 0.3s",
+                                color: skill.color,
+                                filter: `drop-shadow(0 0 8px ${skill.color}40)`,
+                                transition: "all 0.3s ease",
                               },
                               className:
-                                "w-8 h-8 group-hover:scale-110 group-hover:drop-shadow-neon transition-all",
+                                "w-10 h-10 sm:w-12 sm:h-12 group-hover:scale-110 transition-transform",
                             })}
                           </div>
-                          <h4 className="font-semibold text-sm righteous-regular group-hover:text-primary transition-colors">
+
+                          {/* Skill name */}
+                          <h4 className="font-semibold text-xs sm:text-sm righteous-regular group-hover:text-primary transition-colors leading-tight">
                             {skill.name}
                           </h4>
-                          {/* Tooltip */}
-                          <span className="absolute left-1/2 -bottom-8 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-background/90 text-xs text-primary px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap font-mono z-10">
-                            {tooltip}
-                          </span>
+
+                          {/* Subtle accent bar */}
+                          <div
+                            className="absolute bottom-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                            style={{
+                              background: `linear-gradient(90deg, transparent, ${skill.color}, transparent)`,
+                            }}
+                          ></div>
                         </div>
-                      );
-                    })}
+
+                        {/* Tooltip on hover */}
+                        <div className="absolute left-1/2 -bottom-10 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none z-20">
+                          <div
+                            className="px-3 py-1.5 rounded-md text-xs font-mono whitespace-nowrap shadow-xl border"
+                            style={{
+                              backgroundColor: `${skill.color}15`,
+                              borderColor: skill.color,
+                              color: skill.color,
+                            }}
+                          >
+                            {skill.name}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               )
