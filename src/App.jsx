@@ -152,11 +152,11 @@ function App() {
       demo: "https://nocontrole-front.netlify.app/",
       featured: true,
     },
-        {
-      title: "Link in Bio Interativo",
+    {
+      title: "Link na Bio Pessoal",
       description:
         "Página personalizada com links para redes sociais, projetos e contatos. Design moderno com animações e estatísticas dinâmicas.",
-      image: "/banner2.png",
+      image: "/linkinbio.png",
       tech: ["React", "Framer Motion", "Tailwind CSS"],
       github: "https://github.com/jotaveeo/",
       demo: "/bio",
@@ -208,7 +208,7 @@ function App() {
       description:
         "Plataforma de e-commerce completa com painel administrativo e sistema de pagamentos integrado.",
       image: "/bannerdev.jpg",
-      tech: ["Node.js", "Express", "MongoDB"],
+      tech: [],
       github: "#",
       demo: "#",
     },
@@ -217,16 +217,160 @@ function App() {
       description:
         "Aplicativo para geração de recibos para pequenos negócios com templates personalizáveis e exportação em PDF.",
       image: "/bannerdev.jpg",
-      tech: ["Node.js", "PDF-lib", "Express"],
+      tech: [],
       github: "#",
       demo: "#",
     },
     {
-      title: "DownloadVideos",
+      title: "DownloadVideos API",
       description:
         "Site simples para fazer download de vídeos de diversas plataformas, podendo escolher a qualidade e o formato do arquivo.",
       image: "/bannerdev.jpg",
-      tech: ["Node.js", "React", "Express"],
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "MarketPlace NFT Simples (Web3)",
+      description:
+        "Plataforma básica para compra e venda de NFTs com integração de carteira digital e contratos inteligentes.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Encontre seu barbeiro favorito",
+      description:
+        "Plataforma para encontrar e agendar horários com barbeiros locais, com avaliações e fotos de cortes anteriores.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Remuneração em casa",
+      description:
+        "Sistema para papais e mamães gerenciarem a mesada dos filhos, com metas de economia e recompensas com serviços domésticos.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Loja de roupas Developer",
+      description:
+        "E-commerce de roupas temáticas para desenvolvedores, com designs exclusivos e integração com redes sociais.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Loja Ella - Moda Feminina",
+      description:
+        "E-commerce de moda feminina com catálogo diversificado, sistema de recomendações e checkout simplificado.",
+      image: "/ella.png",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Marketplace Next",
+      description:
+        "Plataforma que usa varios marketplaces para vender e reunir produtos de diferentes lojas, com sistema de comparação de preços.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Projeto em Electron",
+      description:
+        "Aplicativo desktop simples desenvolvido com Electron, demonstrando integração com APIs e funcionalidades básicas.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "API de pagamentos completo",
+      description:
+        "API robusta para processamento de pagamentos online, com suporte a múltiplos gateways e segurança avançada. gerar qr code e ate manipular e ter controle total das operações.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Blog com AdSense + IA",
+      description:
+        "Blog otimizado para SEO com integração de anúncios do Google AdSense e geração de conteúdo automatizada por IA.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Sistema para serviços automotivos",
+      description:
+        "Plataforma para agendamento e gerenciamento de serviços automotivos, com histórico de manutenção e lembretes.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Atendimento automatizado com IA + WhatsApp",
+      description:
+        "Sistema de atendimento automatizado via WhatsApp com integração de IA para respostas inteligentes com agendamento e pedidos de serviços.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Projeto em Electron",
+      description:
+        "Aplicativo desktop simples desenvolvido com Electron, demonstrando integração com APIs e funcionalidades básicas.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Agenda de frequência para karatê",
+      description:
+        "Sistema de gerenciamento de frequência para aulas de karatê, com controle de presença e relatórios de desempenho.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Sistema para Pets com IA + Full Stack",
+      description:
+        "Processando informações de saúde e bem-estar dos pets, com recomendações personalizadas e agendamento de consultas.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Projeto para engenheiros + IA + Full Stack",
+      description:
+        "Sistema de gerenciamento de projetos de engenharia com IA para otimização de recursos e cronogramas.",
+      image: "/bannerdev.jpg",
+      tech: [],
+      github: "#",
+      demo: "#",
+    },
+    {
+      title: "Projeto para esportes + IA + Full Stack",
+      description:
+        "Sistema de análise de desempenho esportivo com IA, com apostas e estatísticas em tempo real.",
+      image: "/bannerdev.jpg",
+      tech: [],
       github: "#",
       demo: "#",
     },
@@ -816,8 +960,9 @@ function App() {
             {projects.map((project, index) => (
               <div
                 key={project.title}
-                className={`card-cyberpunk overflow-hidden group ${project.featured ? "md:col-span-2 lg:col-span-2" : ""
-                  }`}
+                className={`card-cyberpunk overflow-hidden group ${
+                  project.featured ? "md:col-span-2 lg:col-span-2" : ""
+                }`}
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -975,7 +1120,8 @@ function App() {
               Vamos Trabalhar Juntos?
             </h2>
             <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed bree-serif-regular px-4">
-              Pronto para transformar sua ideia em realidade? Entre em contato e vamos criar algo incrível juntos!
+              Pronto para transformar sua ideia em realidade? Entre em contato e
+              vamos criar algo incrível juntos!
             </p>
           </div>
 
@@ -994,8 +1140,10 @@ function App() {
                       <Mail className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">Email Principal</p>
-                      <a 
+                      <p className="text-sm text-muted-foreground mb-1">
+                        Email Principal
+                      </p>
+                      <a
                         href="mailto:jotasuportetec@gmail.com"
                         className="text-lg font-semibold hover:text-primary transition-colors"
                       >
@@ -1031,8 +1179,12 @@ function App() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-green-600 group-hover:text-green-500">WhatsApp</p>
-                      <p className="text-sm text-muted-foreground">Resposta rápida</p>
+                      <p className="font-semibold text-green-600 group-hover:text-green-500">
+                        WhatsApp
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        Resposta rápida
+                      </p>
                     </div>
                   </a>
 
@@ -1044,8 +1196,12 @@ function App() {
                       <ExternalLink className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <p className="font-semibold text-accent group-hover:text-accent/80">Link in Bio</p>
-                      <p className="text-sm text-muted-foreground">Todos os links</p>
+                      <p className="font-semibold text-accent group-hover:text-accent/80">
+                        Link in Bio
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        Todos os links
+                      </p>
                     </div>
                   </a>
                 </div>
@@ -1092,7 +1248,7 @@ function App() {
                         viewBox="0 0 24 24"
                         className="text-foreground group-hover:text-blue-500 transition-colors"
                       >
-                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                       </svg>
                     </div>
                   </a>
@@ -1143,10 +1299,7 @@ function App() {
                   Obrigado pelo contato! Em breve você receberá uma resposta. 😊
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
-                    onClick={() => setIsSent(false)}
-                    className="btn-neon"
-                  >
+                  <button onClick={() => setIsSent(false)} className="btn-neon">
                     Enviar Nova Mensagem
                   </button>
                   <a
@@ -1167,7 +1320,8 @@ function App() {
                     Envie sua Mensagem
                   </h3>
                   <p className="text-muted-foreground">
-                    Preencha o formulário abaixo e eu retornarei o mais breve possível.
+                    Preencha o formulário abaixo e eu retornarei o mais breve
+                    possível.
                   </p>
                 </div>
 
@@ -1268,8 +1422,16 @@ function App() {
                   {errorMsg && (
                     <div className="w-full text-center text-red-500 font-semibold py-4 px-6 rounded-xl bg-red-500/10 border-2 border-red-500/20 animate-fadein">
                       <div className="flex items-center justify-center gap-2">
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        <svg
+                          className="w-5 h-5"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                            clipRule="evenodd"
+                          />
                         </svg>
                         {errorMsg}
                       </div>
@@ -1306,15 +1468,27 @@ function App() {
                   <div className="mt-8 p-4 bg-primary/5 border border-primary/20 rounded-xl">
                     <div className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center mt-0.5">
-                        <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                        <svg
+                          className="w-3 h-3 text-primary"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                            clipRule="evenodd"
+                          />
                         </svg>
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-primary mb-1">Privacidade e Segurança</p>
+                        <p className="text-sm font-semibold text-primary mb-1">
+                          Privacidade e Segurança
+                        </p>
                         <p className="text-xs text-muted-foreground leading-relaxed">
-                          Seus dados são tratados com total confidencialidade e não serão compartilhados com terceiros. 
-                          Utilizo essas informações apenas para contato profissional e resposta às suas solicitações.
+                          Seus dados são tratados com total confidencialidade e
+                          não serão compartilhados com terceiros. Utilizo essas
+                          informações apenas para contato profissional e
+                          resposta às suas solicitações.
                         </p>
                       </div>
                     </div>
