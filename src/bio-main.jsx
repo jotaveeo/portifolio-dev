@@ -329,7 +329,9 @@ const BioPage = () => {
             </svg>
             <div className="bio-link-content">
               <div className="bio-link-title">vem por aí!</div>
-              <div className="bio-link-description">Marketing Digital & Desenvolvimento Web</div>
+              <div className="bio-link-description">
+                Marketing Digital & Desenvolvimento Web
+              </div>
             </div>
             <div className="bio-link-badge">🚀 PREMIUM</div>
           </a>

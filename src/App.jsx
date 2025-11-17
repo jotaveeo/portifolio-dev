@@ -27,6 +27,7 @@ import {
   FaPython,
   FaGit,
   FaAws,
+  FaJava,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -398,6 +399,7 @@ function App() {
     { name: "Postman", category: "Tools", icon: <SiPostman /> },
     { name: "Figma", category: "Tools", icon: <SiFigma /> },
     { name: "NPM", category: "Tools", icon: <SiNpm /> },
+    { name: "Java", category: "Backend", icon: <FaJava /> },
   ];
 
   const skillCategories = {
@@ -852,6 +854,10 @@ function App() {
                           iconColor = "#339933";
                           tooltip = "JavaScript no backend";
                           break;
+                        case "Java":
+                          iconColor = "#007396";
+                          tooltip = "Linguagem de programação";
+                          break;
                         case "Express":
                           iconColor = "#000";
                           tooltip = "Framework Node.js";
@@ -1013,6 +1019,9 @@ function App() {
                           break;
                         case "Node.js":
                           iconColor = "#339933";
+                          break;
+                        case "Java":
+                          iconColor = "#007396";
                           break;
                         case "Express":
                           iconColor = "#000";
