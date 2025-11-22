@@ -1,11 +1,1 @@
-# Authorized Digital Sellers (ads.txt)
-# Este arquivo autoriza vendedores de anúncios para este site
-# Formato: google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
-
-# Google AdSense
-# Substitua pub-0000000000000000 pelo seu ID de publicador real do AdSense
-# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
-
-# Adicione outras redes de publicidade abaixo, se necessário
-# Exemplo:
 google.com, pub-1044761139268905, DIRECT, f08c47fec0942fa0
