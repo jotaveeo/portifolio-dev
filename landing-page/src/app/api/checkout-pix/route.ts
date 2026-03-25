@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
         methods: ["PIX"],
         products: [
           {
-            externalIdentifier: "ebook_ia_01",
+            externalId: "ebook_ia_01",
             name: "Guia Prático: Engenharia de Software com IA",
             quantity: 1,
             price: 3780,
