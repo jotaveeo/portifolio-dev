@@ -3,11 +3,13 @@ import Stripe from "stripe";
 import { Resend } from "resend";
 import { WelcomeEmail } from "@/components/emails/WelcomeEmail";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_dummy", {
+export const dynamic = "force-dynamic";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2023-10-16" as any, // fallback para suportar tipagens
 });
 
-const resend = new Resend(process.env.RESEND_API_KEY || "re_dummy");
+const resend = new Resend(process.env.RESEND_API_KEY as string);
 
 export async function POST(req: Request) {
   const body = await req.text();
