@@ -10,7 +10,7 @@ export function PricingPix() {
   const handleCheckout = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/checkout-pix", { method: "POST" });
+      const res = await fetch("/guia-engenharia-ia/api/checkout-pix", { method: "POST" });
       const data = await res.json();
       
       if (data.url) {

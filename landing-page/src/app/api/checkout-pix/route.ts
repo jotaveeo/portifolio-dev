@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
             externalIdentifier: "ebook_ia_01",
             name: "Guia Prático: Engenharia de Software com IA",
             quantity: 1,
-            price: 4700,
+            price: 3780,
             description: "O Guia definitivo para destravar sua produtividade com Inteligência Artificial, Agentes e MCPs."
           }
         ],
@@ -32,13 +32,24 @@ export async function POST(req: NextRequest) {
 
     const data = await response.json();
 
+    console.log("AbacatePay Response Status:", response.status);
+    console.log("AbacatePay Response Data:", JSON.stringify(data, null, 2));
+
     if (!response.ok) {
       console.error("AbacatePay Error:", data);
-      return NextResponse.json({ error: "Failed to create billing" }, { status: response.status });
+      return NextResponse.json({ error: "Failed to create billing", details: data }, { status: response.status });
     }
 
     // The AbacatePay API returns the checkout URL in `data.data.url`
-    return NextResponse.json({ url: data.data.url });
+    const checkoutUrl = data?.data?.url || data?.url;
+    console.log("Checkout URL:", checkoutUrl);
+    
+    if (!checkoutUrl) {
+      console.error("AbacatePay: URL not found in response", data);
+      return NextResponse.json({ error: "URL not found in response" }, { status: 500 });
+    }
+
+    return NextResponse.json({ url: checkoutUrl });
   } catch (error) {
     console.error("Internal Error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
