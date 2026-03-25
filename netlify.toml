@@ -2,6 +2,13 @@
   command = "npm run build" # ou o comando que você usa para construir seu site
   publish = "dist" # ou a pasta onde seu site é construído (geralmente "dist" para projetos Vite)
 
+# Roteamento Reverso para a Landing Page (Next.js)
+[[redirects]]
+  from = "/guia-engenharia-ia/*"
+  to = "https://SEU-SITE-LANDING-PAGE.netlify.app/guia-engenharia-ia/:splat"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
