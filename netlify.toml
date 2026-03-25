@@ -4,6 +4,12 @@
 
 # Roteamento Reverso para a Landing Page (Next.js)
 [[redirects]]
+  from = "/guia-engenharia-ia"
+  to = "https://cute-churros-4e9a36.netlify.app/guia-engenharia-ia"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/guia-engenharia-ia/*"
   to = "https://cute-churros-4e9a36.netlify.app/guia-engenharia-ia/:splat"
   status = 200
