@@ -1,32 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const apiKey = process.env.ABACATEPAY_API_KEY;
     if (!apiKey) {
+      console.error("Missing AbacatePay API Key");
       return NextResponse.json({ error: "Missing AbacatePay API Key" }, { status: 500 });
     }
 
-    const response = await fetch("https://api.abacatepay.com/v1/billing/create", {
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000/guia-engenharia-ia";
+
+    const response = await fetch("https://api.abacatepay.com/v2/checkouts/create", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        frequency: "ONE_TIME",
         methods: ["PIX"],
-        products: [
+        items: [
           {
-            externalId: "ebook_ia_01",
-            name: "Guia Prático: Engenharia de Software com IA",
+            id: "prod_KUEMnJFHSRWFHP3tsDnyqSyN",
             quantity: 1,
-            price: 3780,
-            description: "O Guia definitivo para destravar sua produtividade com Inteligência Artificial, Agentes e MCPs."
           }
         ],
-        returnUrl: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/success`,
-        completionUrl: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/success`
+        returnUrl: `${appUrl}/success`,
+        completionUrl: `${appUrl}/success`,
+        externalId: "guia-engenharia-ia",
       }),
     });
 
@@ -40,10 +42,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Failed to create billing", details: data }, { status: response.status });
     }
 
-    // The AbacatePay API returns the checkout URL in `data.data.url`
     const checkoutUrl = data?.data?.url || data?.url;
     console.log("Checkout URL:", checkoutUrl);
-    
+
     if (!checkoutUrl) {
       console.error("AbacatePay: URL not found in response", data);
       return NextResponse.json({ error: "URL not found in response" }, { status: 500 });

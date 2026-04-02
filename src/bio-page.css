@@ -1,278 +1,386 @@
-/* LINK IN BIO - Design Cyberpunk/Futurista */
-@import url("https://fonts.cdnfonts.com/css/lemon-milk");
+/* ============================================================
+   BIO PAGE v2 — Dark Professional / Vapor Tech
+   Isolado do estilo global do portfólio
+   ============================================================ */
 
-/* Isolamento completo: Resetar estilos globais para a página bio */
-.bio-container,
-.bio-container *,
-.bio-container *::before,
-.bio-container *::after {
-  /* Reset completo */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* ── Reset Isolado ────────────────────────────────────────── */
+.bio-v2-container,
+.bio-v2-container *,
+.bio-v2-container *::before,
+.bio-v2-container *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   border: none;
   outline: none;
-  background: unset;
-  color: unset;
-  font: unset;
   text-decoration: none;
   list-style: none;
 }
 
-/* Variáveis de cores isoladas APENAS para a página BIO */
-.bio-container {
-  --bio-preto: #171717;
-  --bio-laranja-ubuntu: #f2572b;
-  --bio-cinza-escuro: #4d4d4d;
-  --bio-cinza-claro: #dedede;
-  --bio-branco: #ffffff;
+/* ── Container Base ───────────────────────────────────────── */
+.bio-v2-container {
+  --accent: #f2572b;
+  --accent-dim: rgba(242, 87, 43, 0.15);
+  --accent-glow: rgba(242, 87, 43, 0.3);
+  --bg: #0a0a0f;
+  --surface: #111117;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(242, 87, 43, 0.35);
+  --text: #f0f0f0;
+  --text-muted: #8a8a9a;
+  --text-dim: #5a5a6a;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --radius: 16px;
+  --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  /* Gradientes isolados para bio */
-  --bio-gradient-primary: linear-gradient(
-    135deg,
-    var(--bio-cinza-escuro) 0%,
-    var(--bio-laranja-ubuntu) 100%
-  );
-  --bio-gradient-glass: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  --bio-gradient-accent: linear-gradient(
-    45deg,
-    var(--bio-laranja-ubuntu),
-    var(--bio-cinza-escuro)
-  );
-
-  /* Forçar fonte e estilos base para bio */
-  font-family: "Lemon Milk", "Arial", sans-serif !important;
-  overflow-x: hidden;
-  background: var(--bio-preto) !important;
-  color: var(--bio-branco) !important;
-  min-height: 100vh;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
   position: relative;
-  background: linear-gradient(
-    135deg,
-    #0a0a0a 0%,
-    #1a1a1a 50%,
-    #171717 100%
-  ) !important;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 4rem;
 }
 
-/* Fundo dinâmico com elementos glitch */
-.bio-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-      circle at 20% 80%,
-      rgba(242, 87, 43, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(77, 77, 77, 0.05) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 40%,
-      rgba(242, 87, 43, 0.03) 0%,
-      transparent 50%
-    );
-  z-index: 1;
-  animation: glitchPulse 4s ease-in-out infinite;
-}
-
-/* Elementos glitch decorativos */
-.glitch-lines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
+/* ── Background ───────────────────────────────────────────── */
+.bio-v2-bg {
+  position: fixed;
+  inset: 0;
   pointer-events: none;
+  z-index: 0;
 }
 
-.glitch-line {
+.bio-v2-glow {
   position: absolute;
-  height: 2px;
-  background: var(--bio-gradient-accent);
-  opacity: 0.6;
-  animation: glitchMove 6s linear infinite;
+  border-radius: 50%;
+  filter: blur(120px);
 }
 
-.glitch-line:nth-child(1) {
-  top: 20%;
-  width: 30%;
-  left: 10%;
-  animation-delay: 0s;
-}
-.glitch-line:nth-child(2) {
-  top: 45%;
-  width: 25%;
-  right: 15%;
-  animation-delay: 2s;
-}
-.glitch-line:nth-child(3) {
-  top: 70%;
-  width: 40%;
-  left: 20%;
-  animation-delay: 4s;
+.bio-v2-glow-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(242, 87, 43, 0.06);
+  top: -100px;
+  left: -100px;
+  animation: bioGlowPulse 6s ease-in-out infinite;
 }
 
-/* Fragmentos digitais */
-.digital-fragments {
+.bio-v2-glow-2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(99, 102, 241, 0.05);
+  bottom: 10%;
+  right: -80px;
+  animation: bioGlowPulse 8s ease-in-out infinite reverse;
+}
+
+.bio-v2-grid {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  pointer-events: none;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
 }
 
-.fragment {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--bio-laranja-ubuntu);
-  opacity: 0.8;
-  animation: fragmentFloat 8s ease-in-out infinite;
-}
-
-.fragment:nth-child(1) {
-  top: 15%;
-  left: 25%;
-  animation-delay: 0s;
-}
-.fragment:nth-child(2) {
-  top: 35%;
-  right: 30%;
-  animation-delay: 2s;
-}
-.fragment:nth-child(3) {
-  top: 55%;
-  left: 15%;
-  animation-delay: 4s;
-}
-.fragment:nth-child(4) {
-  top: 75%;
-  right: 20%;
-  animation-delay: 6s;
-}
-
-/* Container de conteúdo principal */
-.bio-content {
+/* ── Content ─────────────────────────────────────────────── */
+.bio-v2-content {
   position: relative;
   z-index: 10;
-  max-width: 400px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.bio-v2-header {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-}
-
-/* Header com avatar e info */
-.bio-header {
   text-align: center;
-  margin-bottom: 0.5rem;
 }
 
-.bio-avatar {
-  width: 120px;
-  height: 120px;
+/* Status badge */
+.bio-v2-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 100px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #4ade80;
+  letter-spacing: 0.03em;
+}
+
+.bio-v2-status-dot {
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
   border-radius: 50%;
-  margin: 0 auto 1rem;
+  animation: bioPing 2s ease-in-out infinite;
+}
+
+/* Avatar */
+.bio-v2-avatar-wrap {
   position: relative;
-  overflow: hidden;
-  padding: 3px;
-  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
-  background-size: 300% 300%;
-  animation: instagramGradient 3s ease-in-out infinite;
-  box-shadow: 0 0 30px rgba(249, 206, 52, 0.4), 0 0 50px rgba(238, 42, 123, 0.3),
-    0 0 70px rgba(98, 40, 215, 0.2);
+  width: 150px;
+  height: 150px;
 }
 
-.bio-avatar::before {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  right: 3px;
-  bottom: 3px;
-  background: var(--bio-preto);
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.bio-avatar img {
+.bio-v2-avatar {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border-radius: 50%;
+  object-fit: cover;
+  display: block;
   position: relative;
   z-index: 2;
 }
 
-.bio-title {
-  font-size: 2rem;
+.bio-v2-avatar-ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #f9ce34,
+    #ee2a7b,
+    #6228d7,
+    #f9ce34
+  );
+  z-index: 1;
+  animation: bioRingRotate 4s linear infinite;
+  mask-image: none;
+}
+
+.bio-v2-avatar-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #f9ce34,
+    #ee2a7b,
+    #6228d7,
+    #f9ce34
+  );
+  z-index: 0;
+  animation: bioRingRotate 4s linear infinite;
+  filter: blur(4px);
+  opacity: 0.5;
+}
+
+/* Fix: avatar image over the ring */
+.bio-v2-avatar-wrap .bio-v2-avatar {
+  position: absolute;
+  inset: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+}
+
+/* Identity text */
+.bio-v2-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bio-v2-terminal-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  padding: 0.2rem 0.7rem;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+.bio-v2-name {
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  background: var(--bio-gradient-accent);
-  background-size: 200% 200%;
-  background-clip: text;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.75) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientShift 3s ease-in-out infinite;
-  white-space: nowrap;
-  overflow: visible;
+  letter-spacing: -0.02em;
 }
 
-.bio-subtitle {
-  font-size: 1rem;
-  color: var(--bio-cinza-claro);
-  margin-bottom: 1rem;
-  opacity: 0.9;
+.bio-v2-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
-/* Links principais */
-.bio-links {
+.bio-v2-bio {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 340px;
+  margin-top: 0.25rem;
+}
+
+/* Skills chips */
+.bio-v2-skills-preview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.bio-v2-skill-chip {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.bio-v2-skill-chip:hover {
+  border-color: var(--border-accent);
+  color: var(--accent);
+}
+
+/* ── Stats ──────────────────────────────────────────────── */
+.bio-v2-stats {
+  width: 100%;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.bio-v2-stat-card {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.bio-v2-stat-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.bio-v2-stat-number {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.bio-v2-stat-label {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── CTA Section ─────────────────────────────────────────── */
+.bio-v2-cta-section {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.bio-link {
+.bio-v2-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.bio-v2-cta-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--accent) 0%, #d4401f 100%);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem;
+  border-radius: var(--radius);
+  transition: box-shadow var(--transition);
+  box-shadow: 0 4px 20px var(--accent-glow);
+  cursor: pointer;
+}
+
+.bio-v2-cta-button:hover {
+  box-shadow: 0 8px 30px rgba(242, 87, 43, 0.5);
+}
+
+.bio-v2-cta-ext {
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* ── Links ──────────────────────────────────────────────── */
+.bio-v2-links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.bio-v2-link-card {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 1rem 1.5rem;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(23, 23, 23, 0.4) 100%
-  );
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(242, 87, 43, 0.2);
-  border-radius: 16px;
-  text-decoration: none;
-  color: var(--bio-branco);
-  transition: all 0.3s ease;
+  gap: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
   overflow: hidden;
-  min-height: 70px;
+  transition: border-color var(--transition), box-shadow var(--transition),
+    background var(--transition);
 }
 
-.bio-link::before {
+/* Shimmer effect */
+.bio-v2-link-card::after {
   content: "";
   position: absolute;
   top: 0;
@@ -282,801 +390,156 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05),
     transparent
   );
   transition: left 0.5s ease;
 }
 
-.bio-link:hover::before {
+.bio-v2-link-card:hover::after {
   left: 100%;
 }
 
-.bio-link:hover {
-  transform: translateY(-3px);
-  border-color: var(--bio-laranja-ubuntu);
-  box-shadow: 0 10px 30px rgba(242, 87, 43, 0.3),
-    0 0 20px rgba(242, 87, 43, 0.2);
+.bio-v2-link-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 6px 24px var(--accent-glow);
+  background: rgba(17, 17, 23, 0.9);
 }
 
-.bio-link-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 1rem;
-  filter: drop-shadow(0 0 10px currentColor);
+.bio-v2-link-card.featured {
+  border-color: var(--border-accent);
+  background: linear-gradient(
+    135deg,
+    rgba(242, 87, 43, 0.1),
+    var(--surface)
+  );
 }
 
-.bio-link-content {
+.bio-v2-link-card.highlight {
+  border-color: rgba(74, 222, 128, 0.25);
+}
+
+.bio-v2-link-card.highlight:hover {
+  border-color: rgba(74, 222, 128, 0.5);
+  box-shadow: 0 6px 24px rgba(74, 222, 128, 0.2);
+}
+
+/* Icon */
+.bio-v2-link-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent);
+  transition: background var(--transition);
+}
+
+.bio-v2-link-card:hover .bio-v2-link-icon {
+  background: var(--accent-dim);
+}
+
+.bio-v2-link-icon-svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Body */
+.bio-v2-link-body {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 0.15rem;
 }
 
-.bio-link-title {
-  font-size: 1.1rem;
+.bio-v2-link-label {
+  font-size: 0.88rem;
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  color: var(--text);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.bio-link-description {
-  font-size: 0.85rem;
-  color: var(--bio-cinza-claro);
-  opacity: 0.8;
+.bio-v2-link-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.bio-link-badge {
-  background: var(--bio-laranja-ubuntu);
-  color: var(--bio-branco);
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
+/* Right side */
+.bio-v2-link-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.bio-v2-badge {
+  font-size: 0.65rem;
   font-weight: 600;
-  margin-left: 1rem;
-  box-shadow: 0 0 15px rgba(242, 87, 43, 0.5);
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  white-space: nowrap;
 }
 
-/* Links especiais com destaque */
-.bio-link.featured {
-  background: linear-gradient(
-    135deg,
-    rgba(242, 87, 43, 0.15),
-    rgba(0, 0, 0, 0.8)
-  );
-  border: 2px solid var(--bio-laranja-ubuntu);
-  animation: featuredPulse 2s ease-in-out infinite;
+.bio-v2-link-arrow {
+  width: 14px;
+  height: 14px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  transition: transform var(--transition), color var(--transition);
 }
 
-.bio-link.urgent {
-  background: linear-gradient(
-    135deg,
-    rgba(242, 87, 43, 0.2),
-    rgba(0, 0, 0, 0.7)
-  );
-  border: 2px solid var(--bio-laranja-ubuntu);
-  animation: urgentGlow 1.5s ease-in-out infinite;
+.bio-v2-link-card:hover .bio-v2-link-arrow {
+  transform: translateX(3px);
+  color: var(--accent);
 }
 
-/* Footer com redes sociais */
-.bio-footer {
+/* ── Footer ──────────────────────────────────────────────── */
+.bio-v2-footer {
   margin-top: 0.5rem;
   text-align: center;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+.bio-v2-footer-text {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.5;
 }
 
-.social-link {
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(23, 23, 23, 0.5) 100%
-  );
-  border: 1px solid rgba(242, 87, 43, 0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: var(--bio-branco);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(15px);
+/* ── Keyframes ──────────────────────────────────────────── */
+@keyframes bioGlowPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
 }
 
-.social-link:hover {
-  transform: scale(1.1);
-  border-color: var(--bio-laranja-ubuntu);
-  box-shadow: 0 0 20px rgba(242, 87, 43, 0.5);
+@keyframes bioRingRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-.bio-footer-text {
-  font-size: 0.75rem;
-  color: var(--bio-cinza-claro);
-  opacity: 0.7;
-  margin: 0;
-  padding: 0;
+@keyframes bioPing {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
 }
 
-/* Estilos específicos para BioStats */
-.bio-content .my-10 {
-  margin: 2rem 0;
-}
-
-/* Ajustes para grid de estatísticas */
-.bio-content .grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.bio-content .grid-cols-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-/* Ajustes para motion components dentro da bio */
-.bio-content .relative.group {
-  position: relative;
-}
-
-/* Garantir que gradientes funcionem no contexto da bio */
-.bio-content .bg-gradient-to-br {
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-}
-
-.bio-content .from-orange-500 {
-  --tw-gradient-from: #f97316;
-  --tw-gradient-to: rgb(249 115 22 / 0);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.bio-content .to-gray-600 {
-  --tw-gradient-to: #4b5563;
-}
-
-.bio-content .from-gray-500 {
-  --tw-gradient-from: #6b7280;
-  --tw-gradient-to: rgb(107 114 128 / 0);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.bio-content .to-gray-700 {
-  --tw-gradient-to: #374151;
-}
-
-.bio-content .from-gray-600 {
-  --tw-gradient-from: #4b5563;
-  --tw-gradient-to: rgb(75 85 99 / 0);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.bio-content .to-gray-800 {
-  --tw-gradient-to: #1f2937;
-}
-
-.bio-content .from-orange-400 {
-  --tw-gradient-from: #fb923c;
-  --tw-gradient-to: rgb(251 146 60 / 0);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.bio-content .to-orange-600 {
-  --tw-gradient-to: #ea580c;
-}
-
-/* Cores de texto para estatísticas */
-.bio-content .text-orange-500 {
-  color: var(--bio-laranja-ubuntu);
-}
-
-.bio-content .text-orange-400 {
-  color: #fb923c;
-}
-
-.bio-content .text-gray-300 {
-  color: var(--bio-cinza-claro);
-}
-
-.bio-content .text-gray-400 {
-  color: var(--bio-cinza-escuro);
-}
-
-.bio-content .text-white {
-  color: var(--bio-branco);
-}
-
-/* Animações para estatísticas */
-.bio-content .animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.bio-content .animate-bounce {
-  animation: bounce 1s infinite;
-}
-
-.bio-content .animate-ping {
-  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-.bio-content .animate-spin {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(-25%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-  50% {
-    transform: none;
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-}
-
-@keyframes ping {
-  75%,
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Animações */
-@keyframes glitchPulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes glitchMove {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100vw);
-    opacity: 0;
-  }
-}
-
-@keyframes fragmentFloat {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateY(-20px) rotate(180deg);
-    opacity: 0.4;
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes gradientShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes featuredPulse {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(242, 87, 43, 0.3);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(242, 87, 43, 0.6);
-    transform: scale(1.02);
-  }
-}
-
-@keyframes urgentGlow {
-  0%,
-  100% {
-    box-shadow: 0 0 15px rgba(242, 87, 43, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(242, 87, 43, 0.8);
-  }
-}
-
-@keyframes instagramGradient {
-  0% {
-    background-position: 0% 50%;
-    filter: hue-rotate(0deg);
-  }
-  33% {
-    background-position: 50% 0%;
-    filter: hue-rotate(5deg);
-  }
-  66% {
-    background-position: 100% 50%;
-    filter: hue-rotate(-5deg);
-  }
-  100% {
-    background-position: 0% 50%;
-    filter: hue-rotate(0deg);
-  }
-}
-
-/* ==============================================
-   BIOSTATS INTEGRATION STYLES
-   ============================================== */
-
-/* Container do BioStats */
-.bio-content .bio-stats-container {
-  margin: 1.5rem 0;
-  padding: 0;
-  background: none;
-  border: none;
-}
-
-/* Header das estatísticas */
-.bio-content .bio-stats-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.bio-content .bio-stats-title {
-  font-family: "Lemon Milk", Arial, sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--bio-branco);
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  overflow: visible;
-}
-
-.bio-content .bio-stats-subtitle {
-  font-size: 0.875rem;
-  color: var(--bio-cinza-claro);
-  margin: 0;
-  padding: 0 1rem;
-}
-
-/* Grid das estatísticas */
-.bio-content .bio-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin: 0;
-}
-
-/* Cards individuais */
-.bio-content .bio-stat-card {
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  padding: 1.25rem;
-  min-height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Card específico: Projetos (laranja) */
-.bio-content .bio-stat-card:nth-child(1) {
-  background: linear-gradient(135deg, #f2572b 0%, #d4401f 100%);
-  border-color: rgba(242, 87, 43, 0.5);
-}
-
-/* Card específico: Commits (roxo/azul) */
-.bio-content .bio-stat-card:nth-child(2) {
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-  border-color: rgba(99, 102, 241, 0.5);
-}
-
-/* Card específico: Anos Exp. (cinza escuro) */
-.bio-content .bio-stat-card:nth-child(3) {
-  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
-  border-color: rgba(55, 65, 81, 0.5);
-}
-
-/* Card específico: Cafés (laranja claro) */
-.bio-content .bio-stat-card:nth-child(4) {
-  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
-  border-color: rgba(251, 146, 60, 0.5);
-}
-
-.bio-content .bio-stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* Hover específico para cada card */
-.bio-content .bio-stat-card:nth-child(1):hover {
-  box-shadow: 0 8px 25px rgba(242, 87, 43, 0.4);
-}
-
-.bio-content .bio-stat-card:nth-child(2):hover {
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-}
-
-.bio-content .bio-stat-card:nth-child(3):hover {
-  box-shadow: 0 8px 25px rgba(55, 65, 81, 0.4);
-}
-
-.bio-content .bio-stat-card:nth-child(4):hover {
-  box-shadow: 0 8px 25px rgba(251, 146, 60, 0.4);
-}
-
-/* Efeito glitch nos cards */
-.bio-content .bio-stat-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  transition: left 0.6s ease;
-  z-index: 1;
-}
-
-/* Glitch específico para cada card */
-.bio-content .bio-stat-card:nth-child(1)::before {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
-}
-
-.bio-content .bio-stat-card:nth-child(2)::before {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
-}
-
-.bio-content .bio-stat-card:nth-child(3)::before {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(209, 213, 219, 0.1) 50%,
-    transparent 100%
-  );
-}
-
-.bio-content .bio-stat-card:nth-child(4)::before {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
-}
-
-.bio-content .bio-stat-card:hover::before {
-  left: 100%;
-}
-
-/* Conteúdo do card */
-.bio-content .bio-stat-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-/* Ícone */
-.bio-content .bio-stat-icon {
-  margin-bottom: 0.5rem;
-  display: flex;
-  justify-content: center;
-}
-
-/* Ícone específico para cada card */
-.bio-content .bio-stat-card:nth-child(1) .bio-stat-icon {
-  color: #fff;
-}
-
-.bio-content .bio-stat-card:nth-child(2) .bio-stat-icon {
-  color: #fff;
-}
-
-.bio-content .bio-stat-card:nth-child(3) .bio-stat-icon {
-  color: #d1d5db;
-}
-
-.bio-content .bio-stat-card:nth-child(4) .bio-stat-icon {
-  color: #fff;
-}
-
-/* Número principal */
-.bio-content .bio-stat-number {
-  font-family: "Lemon Milk", Arial, sans-serif;
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-  line-height: 1;
-  color: #fff;
-}
-
-/* Label */
-.bio-content .bio-stat-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #fff;
-  opacity: 0.9;
-}
-
-/* Descrição */
-.bio-content .bio-stat-description {
-  font-size: 0.625rem;
-  margin: 0;
-  color: #fff;
-  opacity: 0.7;
-}
-
-/* Indicador pulse */
-.bio-content .bio-stat-pulse {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-  opacity: 0.8;
-}
-
-/* Pulse específico para cada card */
-.bio-content .bio-stat-card:nth-child(1) .bio-stat-pulse {
-  background: #fff;
-}
-
-.bio-content .bio-stat-card:nth-child(2) .bio-stat-pulse {
-  background: #fff;
-}
-
-.bio-content .bio-stat-card:nth-child(3) .bio-stat-pulse {
-  background: #d1d5db;
-}
-
-.bio-content .bio-stat-card:nth-child(4) .bio-stat-pulse {
-  background: #fff;
-}
-
-/* Footer das estatísticas */
-.bio-content .bio-stats-footer {
-  text-align: center;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1rem;
-  border-radius: 0.75rem;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(23, 23, 23, 0.4) 100%
-  );
-  border: 1px solid rgba(242, 87, 43, 0.3);
-  backdrop-filter: blur(15px);
-}
-
-.bio-content .bio-stats-footer-text {
-  font-size: 0.875rem;
-  color: var(--bio-cinza-claro);
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-/* Animação pulse */
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(1.2);
-  }
-}
-
-/* Responsividade mobile-first */
-@media (max-width: 480px) {
-  .bio-container {
-    padding: 1.5rem 1rem;
-  }
-
-  .bio-content {
-    max-width: 350px;
-    gap: 0.75rem;
-  }
-
-  .bio-avatar {
-    width: 100px;
-    height: 100px;
-  }
-
-  .bio-title {
-    font-size: 1.75rem;
-    white-space: nowrap;
-  }
-
-  .bio-link {
-    padding: 0.875rem 1.25rem;
-    min-height: 60px;
-  }
-
-  .bio-link-title {
-    font-size: 1rem;
-  }
-
-  .bio-link-description {
-    font-size: 0.8rem;
-  }
-
-  .bio-footer {
-    margin-top: 0.25rem;
-  }
-
-  .social-links {
-    gap: 0.5rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .social-link {
-    width: 40px;
-    height: 40px;
-  }
-
-  .bio-footer-text {
-    font-size: 0.7rem;
-  }
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 320px) {
-  .bio-content {
-    max-width: 300px;
-  }
-
-  .bio-avatar {
-    width: 80px;
-    height: 80px;
-  }
-
-  .bio-title {
-    font-size: 1.5rem;
-    white-space: nowrap;
-  }
-
-  .bio-link {
-    padding: 0.75rem 1rem;
-    min-height: 55px;
-  }
-
-  .bio-content .bio-stat-card {
-    padding: 0.875rem;
-    min-height: 90px;
-  }
-
-  .bio-content .bio-stat-number {
-    font-size: 1.25rem;
-  }
-
-  .bio-content .bio-stats-title {
-    font-size: 0.875rem;
-    white-space: nowrap;
-    flex-wrap: nowrap;
-  }
-
-  .social-link {
-    width: 35px;
-    height: 35px;
-  }
-
-  .bio-footer-text {
-    font-size: 0.65rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .bio-content .grid-cols-2 {
-    gap: 0.75rem;
-  }
-
-  .bio-content .my-10 {
-    margin: 1.5rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .bio-content .bio-stats-container {
-    margin: 2rem 0;
-  }
-
-  .bio-content .bio-stats-grid {
-    gap: 0.75rem;
-  }
-
-  .bio-content .bio-stat-card {
-    padding: 1rem;
-    min-height: 100px;
-  }
-
-  .bio-content .bio-stats-title {
-    font-size: 1rem;
-    white-space: nowrap;
-    flex-wrap: nowrap;
-  }
-
-  .bio-content .bio-stat-number {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 320px) {
-  .bio-content .bio-stat-card {
-    padding: 0.875rem;
-    min-height: 90px;
-  }
-
-  .bio-content .bio-stat-number {
-    font-size: 1.25rem;
-  }
-
-  .bio-content .bio-stats-title {
-    font-size: 0.875rem;
-    white-space: nowrap;
-    flex-wrap: nowrap;
-  }
+/* ── Responsivo ─────────────────────────────────────────── */
+@media (max-width: 380px) {
+  .bio-v2-name { font-size: 1.8rem; }
+  .bio-v2-stat-number { font-size: 1.1rem; }
+  .bio-v2-stats { gap: 0.4rem; }
+  .bio-v2-stat-card { padding: 0.75rem 0.5rem; }
 }
