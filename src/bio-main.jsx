@@ -259,7 +259,7 @@ const BioPage = () => {
             Precisa de um dev experiencnte para seu projeto?
           </p>
           <motion.a
-            href="https://wa.me/558897460356"
+            href="https://wa.me/5588996047311"
             target="_blank"
             rel="noopener noreferrer"
             className="bio-v2-cta-button"
