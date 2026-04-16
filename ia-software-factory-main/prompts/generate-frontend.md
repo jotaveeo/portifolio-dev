@@ -1,87 +1,93 @@
-# Generate Frontend — Prompt Avançado
+---
+description: Gerar código frontend completo a partir da arquitetura e contratos de API usando Checkpoints e Reflection
+---
 
-## Função
+# /generate-frontend — Geração de Frontend (Frontend Agent)
 
-Atue como um **Engenheiro Frontend Sênior e UI Designer**. Você gera código frontend completo com estética premium e UX profissional.
+## Pré-requisito
 
-## Presets Estéticos
+A arquitetura (`docs/architecture.md`), contratos de API (`docs/openapi.yaml`) e idealmente o backend funcional devem existir.
 
-Antes de gerar, identifique a direção visual:
+## Passo 1 — Ler Contexto
 
-### Preset A — Clean Dashboard
-- **Palette:** Background `#FAFAFA`, Surface `#FFFFFF`, Primary `#2563EB`, Accent `#7C3AED`, Text `#1E293B`, Muted `#94A3B8`
-- **Style:** Minimalista, espaçoso, tipografia clara, sombras sutis
-- **Components:** Cards com bordas suaves, tabelas clean, gráficos minimalistas
+Leia a arquitetura e os contratos de API. Identifique as rotas, payloads e respostas esperadas.
 
-### Preset B — Dark Professional
-- **Palette:** Background `#0F172A`, Surface `#1E293B`, Primary `#3B82F6`, Accent `#22D3EE`, Text `#F8FAFC`, Muted `#64748B`
-- **Style:** Dark mode elegante, contraste alto, glassmorphism sutil
-- **Components:** Cards com border glow, gradients nos CTAs, hover com brilho
+## Passo 2 — Scaffold do Projeto (Checkpoint 1)
 
-### Preset C — Warm Organic
-- **Palette:** Background `#FEF7ED`, Surface `#FFFFFF`, Primary `#D97706`, Accent `#059669`, Text `#1C1917`, Muted `#A8A29E`
-- **Style:** Quente, acolhedor, bordas arredondadas, ícones outline
-- **Components:** Cards com sombras quentes, badges coloridos, ilustrações
+1. Inicialize o projeto Next.js (App Router) + TypeScript.
+2. Instale dependências: `tailwindcss`, `lucide-react`, `zustand`, `@tanstack/react-query`, `axios`, `zod`, `react-hook-form`.
+3. Configure `tsconfig.json` com paths e strict mode.
+4. Configure o TailwindCSS (`tailwind.config.ts` e `globals.css`).
 
-### Preset D — Brutalist Modern
-- **Palette:** Background `#F5F5F0`, Surface `#FFFFFF`, Primary `#000000`, Accent `#EF4444`, Text `#171717`, Muted `#737373`
-- **Style:** Tipografia bold, contrastes fortes, bordas geométricas
-- **Components:** Botões sólidos, borders visíveis, monospace para dados
+**Validação do Checkpoint 1:**
+- Execute `npm run dev` e confirme que a página inicial carrega.
+- *Se falhar, use o padrão ReAct (Thought -> Action -> Observation) para corrigir.*
 
-## Padrões Fixos (NUNCA ALTERE)
+## Passo 3 — Design System e Componentes Base (Checkpoint 2)
 
-### Estrutura obrigatória
+Atue como o **Frontend Agent** e gere:
 
-```
-src/
-├── components/
-│   ├── ui/          # Button, Input, Card, Modal, Badge, Toast, Table, Select, Dropdown
-│   └── layout/      # Sidebar, Header, MainLayout, PageWrapper
-├── pages/           # Uma pasta por rota
-├── hooks/           # useAuth, useDebounce, useLocalStorage, usePagination
-├── services/        # API calls (um arquivo por domínio)
-├── stores/          # Zustand stores
-├── styles/          # globals.css com tokens
-├── utils/           # Formatters, validators, helpers
-├── types/           # TypeScript interfaces
-└── lib/             # Configurações (queryClient, axios instance)
-```
+1. **Tokens de Design** — Cores, tipografia, espaçamentos (`tailwind.config.ts`).
+2. **Componentes Base (UI)** — `src/components/ui/` (Button, Input, Card, Modal, Badge, Toast, Table).
 
-### Design System obrigatório
+**Validação do Checkpoint 2 (Reflection):**
+Antes de prosseguir, faça uma auto-crítica:
+- [ ] Os componentes base são reutilizáveis e aceitam `className` via props?
+- [ ] A acessibilidade (ARIA) está implementada nos componentes interativos (Modal, Toast)?
+- [ ] O design system está consistente com a marca/estética definida?
 
-- **Tipografia:** Inter ou Plus Jakarta Sans (Google Fonts), escala: 12/14/16/18/20/24/32/48px
-- **Espaçamento:** escala de 4px (4, 8, 12, 16, 20, 24, 32, 48, 64)
-- **Bordas:** `rounded-lg` (8px) para cards, `rounded-md` (6px) para inputs, `rounded-full` para avatares
-- **Sombras:** 3 níveis (sm, md, lg) usando HSL com opacidade
-- **Transições:** `transition-all duration-200 ease-in-out` em todo elemento interativo
-- **Hover:** `translateY(-1px)` + sombra aumentada em cards, `scale(1.02)` em botões
+*Se algum critério falhar, refatore os componentes silenciosamente.*
 
-### Micro-interações obrigatórias
+## Passo 4 — Layout e Navegação (Checkpoint 3)
 
-- Loading states em todo botão de ação (spinner + disabled)
-- Skeleton loading em listas e cards durante fetch
-- Toast notifications para sucesso/erro
-- Animação de entrada (fade-up) em páginas e modais
-- Focus ring visível em inputs (acessibilidade)
+Gere:
 
-## Entrada
+1. **Layouts** — `src/components/layout/` (Sidebar, Header, MainLayout).
+2. **Navegação** — Configuração de rotas no Next.js (App Router).
 
-Arquitetura do sistema + contratos de API.
+**Validação do Checkpoint 3:**
+- A navegação funciona corretamente entre as páginas principais?
+- O layout é responsivo (mobile-first)?
 
-## Saída Esperada
+## Passo 5 — Integração com API e Estado (Checkpoint 4)
 
-1. Todos os componentes UI implementados com variantes
-2. Layout completo com Sidebar + Header
-3. Todas as pages com CRUD funcional
-4. Services integrados com React Query
-5. Auth flow completo (login, register, protected routes)
-6. Responsivo (mobile, tablet, desktop)
-7. Dark mode toggle (se preset B)
+Gere:
 
-## Regras
+1. **Tipos** — `src/types/api.ts` (gerados a partir do `openapi.yaml`).
+2. **Services** — `src/services/api.ts` (configuração do Axios com interceptors para JWT).
+3. **Hooks** — `src/hooks/` (React Query hooks para chamadas de API).
+4. **Stores** — `src/stores/` (Zustand para estado global, ex: `useAuthStore`).
 
-- Siga `system/coding-standards.md`
-- Mobile-first
-- Zero placeholder de imagem — use `generate_image` tool ou Unsplash
-- Toda interação deve ter feedback visual
-- Componentes tipados com TypeScript
+**Validação do Checkpoint 4:**
+- Os tipos gerados batem exatamente com os contratos da API?
+- O interceptor do Axios adiciona o token JWT no header `Authorization`?
+- O interceptor trata erros 401 (Unauthorized) fazendo refresh do token ou logout?
+
+## Passo 6 — Páginas e Funcionalidades (Checkpoint 5)
+
+Implemente as páginas principais (CRUDs, Dashboards, etc.) usando os componentes base e hooks de API.
+
+**Validação do Checkpoint 5 (Reflection):**
+Antes de prosseguir, faça uma auto-crítica:
+- [ ] Os formulários usam `react-hook-form` e validação com `zod`?
+- [ ] O tratamento de loading e erro está visível para o usuário (Toast, Skeleton)?
+- [ ] As páginas são responsivas em telas pequenas (mobile)?
+
+*Se algum critério falhar, refatore as páginas silenciosamente.*
+
+## Passo 7 — Auth e Segurança (Checkpoint Final)
+
+Implemente o fluxo completo de autenticação no frontend:
+- Página de Login (`/login`).
+- Página de Registro (`/register`).
+- Provider de Autenticação (`AuthProvider`) para proteger rotas privadas.
+- Lógica de Logout.
+
+## Passo 8 — Validação Final e Entrega
+
+Execute `npm run build` para validar que tudo compila sem erros de TypeScript.
+
+Apresente um resumo ao usuário e pergunte:
+- "O frontend está pronto e validado. Posso prosseguir para o deploy (`/deploy-system`)?"
+
+// turbo-all

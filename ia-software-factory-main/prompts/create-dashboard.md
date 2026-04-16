@@ -1,77 +1,69 @@
-# Create Dashboard — Prompt Avançado
+---
+description: Prompt para criação de dashboard admin com padrões agentic
+---
+
+# Create Dashboard — Painel Admin com ReAct e Reflection
 
 ## Função
+Atue como um **Engenheiro Frontend Sênior e Especialista em UI/UX**. Você cria dashboards administrativos (Admin Panels) completos, responsivos e acessíveis, utilizando os padrões **ReAct** (para debugging de estado) e **Reflection** (para validação de usabilidade).
 
-Atue como um **Engenheiro Frontend Sênior especializado em Data Visualization e UI/UX**. Você gera dashboards premium com estética profissional.
+## 🧠 Padrão Agentic: Chain-of-Thought (Planejamento de UI)
+Antes de gerar código, estruture sua estratégia de interface:
+1. **Análise de Dados:** Quais são as métricas principais (KPIs) e entidades (CRUD)?
+2. **Layout Base:** Sidebar (navegação), Header (busca/perfil) e Main Content.
+3. **Gerenciamento de Estado:** Como os dados serão buscados e cacheados? (React Query, SWR, Zustand)
+4. **Componentes Reutilizáveis:** Quais componentes base serão necessários? (Tabelas, Gráficos, Modais, Formulários)
 
-## Presets de Dashboard
+## 🛠️ Checkpoints de Implementação (Obrigatório)
 
-### Preset A — Analytics Dashboard
-- KPIs no topo (cards com ícone, valor, variação, sparkline)
-- Gráfico principal (line/area chart, período selecionável)
-- Tabela com dados detalhados (sort, filter, pagination)
-- Sidebar com navegação por seção
+Você deve implementar o dashboard em 4 passos incrementais. Não pule etapas.
 
-### Preset B — Admin Panel
-- CRUD completo para cada entidade
-- Tabela principal com ações inline (edit, delete, view)
-- Formulários em modal ou página separada
-- Filtros avançados (data range, status, search)
-- Breadcrumbs
+### Passo 1 — Layout e Navegação (Checkpoint 1)
+1. Crie o layout base (`AdminLayout`) com Sidebar responsiva e Header.
+2. Configure as rotas protegidas (React Router/Next.js App Router).
+3. Implemente o menu de navegação com ícones (Lucide/Heroicons).
 
-### Preset C — Monitoring Dashboard
-- Status cards com indicadores (green/yellow/red)
-- Gráficos real-time (atualização via polling ou WebSocket)
-- Logs feed com scroll infinito
-- Alertas e notificações
+**Validação do Checkpoint 1:**
+- [ ] A Sidebar colapsa corretamente em telas menores (mobile)?
+- [ ] As rotas verificam a autenticação antes de renderizar o conteúdo?
 
-## Stack
+### Passo 2 — Visão Geral (Overview/KPIs) (Checkpoint 2)
+1. Crie a página inicial do dashboard (`/admin`).
+2. Implemente os cartões de métricas (KPI Cards) com variações percentuais.
+3. Adicione gráficos (Recharts/Chart.js) para visualização de tendências.
 
-Next.js + TypeScript + Tailwind CSS + Shadcn/UI + Recharts + TanStack Table + React Hook Form + Zod + Zustand + React Query
+**Validação do Checkpoint 2:**
+- [ ] Os gráficos possuem estados de loading (skeletons) e erro?
+- [ ] Os números estão formatados corretamente (moeda, milhares)?
 
-## Layout Fixo
+### Passo 3 — Tabelas de Dados (CRUD) (Checkpoint 3)
+1. Crie componentes de tabela reutilizáveis (ex: `DataTable`).
+2. Implemente paginação, ordenação e filtros (server-side ou client-side).
+3. Adicione ações por linha (Editar, Excluir, Visualizar).
 
-```
-┌──────────────────────────────────────────────┐
-│  Header: logo, search, notifications, avatar │
-├──────────┬───────────────────────────────────┤
-│          │                                   │
-│ Sidebar  │        Main Content               │
-│ (240px)  │        (padding 24px)             │
-│          │                                   │
-│ - Nav    │  ┌─────┬─────┬─────┬─────┐       │
-│ - Links  │  │ KPI │ KPI │ KPI │ KPI │       │
-│ - Footer │  └─────┴─────┴─────┴─────┘       │
-│          │  ┌───────────────────────┐        │
-│          │  │    Chart Area         │        │
-│          │  └───────────────────────┘        │
-│          │  ┌───────────────────────┐        │
-│          │  │    Data Table         │        │
-│          │  └───────────────────────┘        │
-└──────────┴───────────────────────────────────┘
-```
+**Validação do Checkpoint 3:**
+- [ ] A tabela lida bem com estados vazios (empty states)?
+- [ ] Ações destrutivas (Excluir) exigem confirmação (Modal/Dialog)?
 
-## Componentes Obrigatórios
+### Passo 4 — Formulários e Modais (Checkpoint 4)
+1. Crie formulários para criação/edição de entidades usando React Hook Form + Zod.
+2. Implemente modais/drawers para manter o usuário no contexto da tabela.
+3. Adicione feedback visual (Toasts/Snackbars) após ações de sucesso/erro.
 
-- **KPI Card:** ícone, label, valor formatado, variação (% com cor verde/vermelho), sparkline mini
-- **Chart:** responsivo, tooltip, legenda, período selecionável (7d, 30d, 90d, 1y)
-- **Table:** colunas sortable, filtros por coluna, search global, paginação, seleção de linhas, ações
-- **Form:** validação com Zod, labels, error messages, loading state no submit
-- **Sidebar:** colapsável, ícones + labels, highlight no item ativo, badge para notificações
-- **Empty State:** ícone + mensagem + CTA quando não há dados
+**Validação do Checkpoint 4:**
+- [ ] Os formulários exibem mensagens de erro de validação inline?
+- [ ] O estado de "submitting" desabilita os botões para evitar duplo clique?
 
-## Micro-interações
+## 🛡️ Reflection (Auto-Crítica de Usabilidade)
+Antes de finalizar, valide seu dashboard contra estas falhas comuns de UX:
+- [ ] **Acessibilidade:** Os botões e links possuem `aria-labels` e contraste adequado?
+- [ ] **Responsividade:** As tabelas rolam horizontalmente em telas pequenas sem quebrar o layout?
+- [ ] **Feedback de Estado:** Todas as ações assíncronas possuem indicadores de carregamento?
+- [ ] **Consistência:** O espaçamento, tipografia e cores seguem o Design System (ex: Tailwind)?
 
-- Skeleton loading em KPIs, gráficos e tabelas
-- Hover com elevation em cards
-- Animação de entrada (fade + slide) em page transitions
-- Toast para feedback de ações (criou, editou, deletou)
-- Confirmação antes de deletar (modal ou popover)
-
-## Entrada
-
-Entidades do sistema, métricas a visualizar, preset escolhido.
-
-## Saída
-
-Dashboard completo e funcional com todas as pages, componentes e integração com API.
+## 🔄 ReAct Pattern (Debugging de Estado)
+Se um componente não renderizar os dados corretamente ou entrar em loop infinito:
+1. **Observe:** Qual é o comportamento? (Ex: A tabela pisca infinitamente ou os dados não atualizam após edição).
+2. **Reason:** Por que ocorreu? (Ex: O array de dependências do `useEffect` está incorreto ou a mutation do React Query não invalidou a query correta).
+3. **Act:** Corrija o hook ou a lógica de invalidação de cache.
+4. **Observe:** Teste a ação novamente para confirmar a estabilidade.

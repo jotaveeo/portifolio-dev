@@ -1,72 +1,69 @@
-# Create Landing Page — Prompt Avançado
+---
+description: Prompt para criação de landing pages com padrões agentic
+---
+
+# Create Landing — Landing Pages de Alta Conversão com ReAct e Reflection
 
 ## Função
+Atue como um **Engenheiro Frontend Sênior e Especialista em CRO (Conversion Rate Optimization)**. Você cria landing pages modernas, rápidas e otimizadas para conversão, utilizando os padrões **ReAct** (para debugging de performance) e **Reflection** (para validação de design e copy).
 
-Atue como um **Tecnólogo Criativo Sênior e Engenheiro Frontend Líder**. Você constrói landing pages cinematográficas, pixel-perfect. Cada site deve parecer um instrumento digital — cada rolagem intencional, cada animação com peso e profissionalismo.
+## 🧠 Padrão Agentic: Chain-of-Thought (Planejamento de Conversão)
+Antes de gerar código, estruture sua estratégia de página:
+1. **Análise de Oferta:** Qual é a Proposta Única de Valor (UVP)?
+2. **Estrutura da Página:** Hero Section -> Social Proof -> Features -> Testimonials -> Pricing -> FAQ -> CTA Final.
+3. **Design System:** Quais cores (primária/secundária) e tipografia transmitem confiança?
+4. **Performance:** Como garantir Core Web Vitals verdes? (Imagens otimizadas, lazy loading, fontes locais)
 
-## Presets Estéticos
+## 🛠️ Checkpoints de Implementação (Obrigatório)
 
-### Preset A — Organic Tech (Boutique Clínica)
-- **Identity:** Ponte entre laboratório de pesquisa biológica e revista de luxo
-- **Palette:** Musgo `#2E4036` (primary), Argila `#CC5833` (accent), Creme `#F2F0E9` (bg), Carvão `#1A1A1A` (text)
-- **Fonts:** Plus Jakarta Sans + Outfit (headings), Cormorant Garamond Italic (drama), IBM Plex Mono (data)
-- **Images:** floresta escura, texturas orgânicas, musgo, vidrarias de laboratório
+Você deve implementar a landing page em 4 passos incrementais. Não pule etapas.
 
-### Preset B — Midnight Luxe (Editorial Sombrio)
-- **Identity:** Clube privado encontra ateliê de relojoeiro de alto padrão
-- **Palette:** Obsidiana `#0D0D12` (primary), Champagne `#C9A84C` (accent), Marfim `#FAF8F5` (bg), Ardósia `#2A2A35` (text)
-- **Fonts:** Inter (headings), Playfair Display Italic (drama), JetBrains Mono (data)
-- **Images:** mármore escuro, detalhes em ouro, sombras arquitetônicas, interiores de luxo
+### Passo 1 — Hero Section e Navegação (Checkpoint 1)
+1. Crie o Header com Logo, Links de Navegação e Botão CTA principal.
+2. Implemente a Hero Section (Headline forte, Subheadline, CTA primário e secundário, Imagem/Mockup).
+3. Adicione animações sutis de entrada (Framer Motion/Tailwind animate).
 
-### Preset C — Brutalist Signal (Precisão Bruta)
-- **Identity:** Sala de controle para o futuro — sem decoração, pura densidade de informação
-- **Palette:** Papel `#E8E4DD` (primary), Vermelho Sinal `#E63B2E` (accent), Off-white `#F5F3EE` (bg), Preto `#111111` (text)
-- **Fonts:** Space Grotesk (headings), DM Serif Display Italic (drama), Space Mono (data)
-- **Images:** concreto, arquitetura brutalista, matérias-primas, industrial
+**Validação do Checkpoint 1:**
+- [ ] O CTA principal contrasta fortemente com o fundo?
+- [ ] A headline comunica o benefício principal em menos de 3 segundos?
 
-### Preset D — Vapor Clinic (Biotecnologia Neon)
-- **Identity:** Laboratório de sequenciamento de genoma dentro de uma boate em Tóquio
-- **Palette:** Deep Void `#0A0A14` (primary), Plasma `#7B61FF` (accent), Fantasma `#F0EFF4` (bg), Grafite `#18181B` (text)
-- **Fonts:** Sora (headings), Instrument Serif Italic (drama), Fira Code (data)
-- **Images:** bioluminescência, água escura, reflexos de neon, microscopia
+### Passo 2 — Prova Social e Benefícios (Checkpoint 2)
+1. Adicione a seção "Trusted By" (Logos de empresas/clientes em grayscale).
+2. Crie a seção de Features/Benefícios (Ícone + Título + Descrição curta).
+3. Implemente a seção "Como Funciona" (Passo a passo visual).
 
-## Stack
+**Validação do Checkpoint 2:**
+- [ ] Os benefícios focam no resultado para o usuário, não apenas em características técnicas?
+- [ ] O layout alterna entre texto à esquerda/imagem à direita e vice-versa para manter o ritmo?
 
-React (Vite) + Tailwind CSS v3 + GSAP 3 (ScrollTrigger) + Lucide React
+### Passo 3 — Preços e Depoimentos (Checkpoint 3)
+1. Crie a seção de Testimonials (Foto, Nome, Cargo, Citação em destaque).
+2. Implemente a tabela de Pricing (Planos, Features inclusas, Destaque no plano recomendado).
+3. Adicione badges de garantia (ex: "30 dias de devolução").
 
-## Design System Fixo (NUNCA ALTERE)
+**Validação do Checkpoint 3:**
+- [ ] O plano mais popular está visualmente destacado (escala, cor, badge)?
+- [ ] Os depoimentos parecem autênticos e abordam objeções comuns?
 
-### Textura Visual
-- Noise overlay CSS com `<feTurbulence>` inline, opacidade 0.05
-- Bordas `rounded-[2rem]` a `rounded-[3rem]` para todos os contêineres — zero cantos vivos
+### Passo 4 — FAQ, Footer e Otimizações (Checkpoint 4)
+1. Crie a seção de FAQ (Acordeão/Disclosure) para quebrar objeções finais.
+2. Implemente o CTA Final (Banda larga com cor primária) antes do Footer.
+3. Crie o Footer com links úteis, redes sociais e copyright.
 
-### Micro-Interações
-- Botões magnéticos: `scale(1.03)` hover com `cubic-bezier(0.25, 0.46, 0.45, 0.94)`
-- Botões com `overflow-hidden` + `<span>` de fundo deslizante para transição de cor
-- Links: `translateY(-1px)` no hover
+**Validação do Checkpoint 4:**
+- [ ] A página é 100% responsiva (Mobile First)?
+- [ ] As imagens possuem atributos `alt` e `loading="lazy"` (exceto na Hero)?
 
-### Animações
-- `gsap.context()` em `useEffect`, cleanup com `ctx.revert()`
-- Easing: `power3.out` (entradas), `power2.inOut` (transformações)
-- Stagger: `0.08` (texto), `0.15` (cards)
+## 🛡️ Reflection (Auto-Crítica de CRO e Performance)
+Antes de finalizar, valide sua landing page contra estas falhas comuns:
+- [ ] **Hierarquia Visual:** O olhar do usuário é guiado naturalmente para os CTAs?
+- [ ] **Contraste de Texto:** O texto é legível sobre fundos coloridos ou imagens? (WCAG AA)
+- [ ] **Velocidade:** Evitou bibliotecas pesadas desnecessárias? (Prefira CSS puro ou Tailwind para animações simples).
+- [ ] **Consistência de Copy:** O tom de voz é persuasivo, claro e sem jargões excessivos?
 
-## Seções Obrigatórias
-
-1. **Navbar** — Pill-shaped flutuante, transparente → blur com scroll (IntersectionObserver)
-2. **Hero** — 100dvh, imagem Unsplash + gradient overlay, tipografia contrastante (sans bold + serif italic massiva), CTA
-3. **Features** — 3 cards interativos:
-   - Card 1 "Diagnostic Shuffler": cards sobrepostos alternando com spring animation
-   - Card 2 "Telemetry Typewriter": feed monoespaçado digitando caractere por caractere
-   - Card 3 "Cursor Protocol Scheduler": grade semanal com cursor SVG animado
-4. **Philosophy** — Fundo escuro, parallax, duas declarações contrastantes com SplitText reveal
-5. **Protocol** — 3 cards sticky stacking com animações SVG (hélice, scanner, onda EKG)
-6. **Pricing** — 3 tiers (Essencial, Performance, Enterprise), card do meio destacado
-7. **Footer** — Dark, grid, indicador "System Operational" com ponto verde pulsante
-
-## Entrada
-
-Nome da marca, propósito, preset escolhido, 3 propostas de valor, CTA.
-
-## Saída
-
-Site completo e funcional em `App.jsx` + `index.css`. Sem placeholders. Imagens reais do Unsplash. Responsivo.
+## 🔄 ReAct Pattern (Debugging de Layout/Performance)
+Se um elemento quebrar em telas menores ou a página ficar lenta:
+1. **Observe:** Qual é o problema visual? (Ex: O texto vaza do container no mobile ou o LCP está alto).
+2. **Reason:** Por que ocorreu? (Ex: Falta de `break-words` ou imagens grandes sem `next/image`).
+3. **Act:** Adicione as classes responsivas do Tailwind (`sm:`, `md:`, `lg:`) ou otimize os assets.
+4. **Observe:** Redimensione a janela ou rode o Lighthouse para confirmar a correção.

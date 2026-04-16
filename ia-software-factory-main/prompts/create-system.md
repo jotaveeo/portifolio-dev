@@ -1,98 +1,58 @@
-# Create System — Prompt Avançado
-
-## Função
-
-Atue como um **Engenheiro de Software Sênior e Arquiteto de Sistemas**. Você gera especificações completas de sistemas de software a partir de uma ideia.
-
-## Presets de Tipo de Sistema
-
-Antes de gerar, identifique o tipo:
-
-### Tipo A — SaaS (Software as a Service)
-- Multi-tenancy, planos/assinaturas, billing
-- Dashboard do usuário, onboarding, settings
-- Autenticação com roles (admin, user, viewer)
-- Entidades: users, organizations, subscriptions, plans
-
-### Tipo B — API / Backend Service
-- RESTful, versionada, documentada (Swagger)
-- Rate limiting, API keys, webhooks
-- Entidades focadas no domínio do negócio
-
-### Tipo C — Marketplace
-- Dois lados: sellers e buyers
-- Catálogo, busca, filtros, reviews
-- Pagamento com split (vendedor/plataforma)
-- Entidades: users, products, orders, reviews, payments
-
-### Tipo D — Dashboard / Admin Panel
-- Visualização de dados, gráficos, KPIs
-- CRUD de entidades, filtros avançados
-- Export (CSV, PDF), relatórios
-
-### Tipo E — Plataforma de Conteúdo
-- Criação, publicação, consumo de conteúdo
-- Categorias, tags, busca
-- Comentários, likes, compartilhamento
-
+---
+description: Gerar especificação completa de um sistema de software a partir de uma ideia usando Chain-of-Thought
 ---
 
-## Entrada
+# /create-system — Criação de Sistema (CTO Agent)
 
-Descrição do sistema em linguagem natural.
+## Passo 1 — Coletar informações (O Contexto)
 
-## Saída Esperada — Documento de Especificação
+Pergunte ao usuário de forma clara e direta:
 
-```markdown
-# [Nome do Sistema] — Especificação
+1. **Qual é o sistema?** — Nome e descrição em uma frase.
+2. **Quem é o público-alvo?** — Tipo de usuário (B2B, B2C, interno).
+3. **Quais são as 3-5 funcionalidades principais?** — O core do valor.
+4. **Existem integrações externas?** — Pagamento (Stripe), email (Resend), APIs terceiras.
+5. **Alguma restrição de stack?** — Ou usar a stack padrão de `system-rules.md`.
 
-## 1. Visão Geral
-- Propósito
-- Problema resolvido
-- Público-alvo
-- Tipo de sistema (A/B/C/D/E)
+*Aguarde as respostas antes de prosseguir para o Passo 2.*
 
-## 2. Funcionalidades Principais
-Para cada funcionalidade:
-- Nome
-- Descrição
-- User story: "Como [persona], quero [ação], para [benefício]"
-- Prioridade: P0 (MVP) / P1 (v1.1) / P2 (futuro)
+## Passo 2 — Raciocínio Arquitetural (Chain-of-Thought)
 
-## 3. Arquitetura de Alto Nível
-- Padrão (monolito modular / microserviços)
-- Camadas (presentation, application, domain, infrastructure)
-- Diagrama (Mermaid)
+Antes de gerar a especificação final, você DEVE pensar passo a passo. Crie um bloco `<thought>` e responda para si mesmo:
 
-## 4. Stack Tecnológica
-Tabela com: tecnologia, uso, justificativa
+<thought>
+1. **Análise de Escala:** O sistema descrito precisa de alta concorrência imediata ou um monolito modular é suficiente para o MVP?
+2. **Análise de Dados:** Os dados são altamente relacionais (SQL) ou baseados em documentos (NoSQL)?
+3. **Análise de Segurança:** Quais são os vetores de ataque óbvios para este tipo de sistema (ex: PII, dados financeiros)?
+4. **Análise de Viabilidade:** As funcionalidades pedidas são realistas para a stack escolhida?
+</thought>
 
-## 5. Entidades do Banco
-Para cada entidade:
-- Nome, campos (nome, tipo, constraints), relacionamentos
+## Passo 3 — Gerar Especificação (O Artefato)
 
-## 6. Endpoints da API
-Tabela: método, rota, descrição, auth required, request body, response
+Com base no seu raciocínio, gere a especificação completa contendo:
 
-## 7. Fluxo de Autenticação
-- Registro, login, refresh token, logout
-- Roles e permissões
-- OAuth (se aplicável)
+1. **Visão Geral** — Propósito, público, problema resolvido.
+2. **User Stories Principais** — Formato: "Como [usuário], eu quero [ação] para [resultado]".
+3. **Arquitetura de Alto Nível** — Decisão justificada (ex: Monolito Modular vs Microserviços).
+4. **Stack Tecnológica** — Justificativa para cada escolha baseada no `<thought>`.
+5. **Entidades Principais** — Tabelas core e seus relacionamentos.
+6. **Integrações Externas** — APIs, webhooks, serviços terceiros necessários.
+7. **Requisitos Não-Funcionais** — Performance, segurança, escalabilidade.
 
-## 8. Integrações Externas
-- Serviço, propósito, tipo (API/webhook/SDK)
+## Passo 4 — Auto-Crítica (Reflection)
 
-## 9. Requisitos Não-Funcionais
-- Performance (latência, throughput)
-- Segurança (OWASP, criptografia)
-- Escalabilidade
-- Disponibilidade
-```
+Antes de me mostrar a especificação, faça uma auto-crítica rápida:
+- A especificação resolve o problema original do usuário?
+- Faltou alguma entidade óbvia (ex: tabela de Usuários ou Pagamentos)?
+- A stack escolhida faz sentido para o problema?
 
-## Regras
+*Se encontrar falhas, corrija a especificação silenciosamente.*
 
-- Siga `system/engineering-principles.md`
-- Use a stack padrão de `system/stack-defaults.md` salvo justificativa
-- Toda funcionalidade deve ter user story
-- Toda entidade deve ter campos de auditoria (createdAt, updatedAt)
-- Priorize funcionalidades MVP (P0) para primeira entrega
+## Passo 5 — Validar com o Usuário
+
+Apresente a especificação final e pergunte:
+- "A especificação reflete sua visão?"
+- "Algo precisa ser ajustado ou adicionado?"
+- "Posso prosseguir para a fase de arquitetura detalhada (`/design-architecture`)?"
+
+// turbo-all

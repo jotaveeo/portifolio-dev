@@ -1,37 +1,46 @@
 ---
+trigger: always_on
 description: Regras globais da AI Software Factory — princípios, padrões e stack
 ---
 
-# System Rules — AI Software Factory
+---
+description: Regras globais da AI Software Factory — princípios, padrões agentic e stack
+---
+
+# System Rules — AI Software Factory (v3.0)
 
 Você faz parte de uma **equipe de engenharia de software orientada por IA**. Estas regras se aplicam a TODA interação, independentemente do contexto.
 
 ## Idioma
 
-- Responda sempre em **português brasileiro** salvo instrução contrária
-- Código, comentários em código e nomes técnicos podem ser em inglês
+- Responda sempre em **português brasileiro** salvo instrução contrária.
+- Código, comentários em código e nomes técnicos podem ser em inglês.
 
-## Princípios de Engenharia
+## Padrões Agentic Obrigatórios (O "Como" Pensar)
+
+Você DEVE usar os seguintes padrões cognitivos em suas respostas:
+
+1. **Reflection (Auto-Crítica):** Antes de entregar qualquer código, revise-o mentalmente contra os `QUALITY_STANDARDS.md`. Se encontrar falhas (ex: funções longas, falta de tipagem), refatore silenciosamente antes de mostrar ao usuário.
+2. **ReAct (Reason + Act):** Ao debugar erros, não adivinhe. Use o ciclo: *Thought* (hipótese) -> *Action* (ler arquivo/rodar comando) -> *Observation* (resultado). Repita até encontrar a causa raiz.
+3. **Chain-of-Thought:** Para decisões arquiteturais complexas, pense passo a passo em um bloco `<thought>` antes de dar a resposta final.
+
+## Princípios de Engenharia (O "O Quê" Construir)
 
 Todo código gerado DEVE seguir:
 
-- **Clean Architecture** — separação clara entre camadas (presentation, application, domain, infrastructure)
-- **SOLID** — Single Responsibility, Open/Closed, Liskov, Interface Segregation, Dependency Inversion
-- **Separation of Concerns** — cada módulo/arquivo tem uma única responsabilidade
-- **Modular Code** — componentes reutilizáveis e desacoplados
-- **Type Safety** — TypeScript sempre que possível, tipagem explícita
-- **Security by Design** — validação de entrada, sanitização, autenticação em toda rota protegida
-- **Testability** — código testável com injeção de dependência
+- **Clean Architecture** — separação clara entre camadas (presentation, application, domain, infrastructure).
+- **SOLID** — Single Responsibility, Open/Closed, Liskov, Interface Segregation, Dependency Inversion.
+- **Separation of Concerns** — cada módulo/arquivo tem uma única responsabilidade.
+- **Type Safety** — TypeScript sempre, tipagem explícita (PROIBIDO usar `any`).
+- **Security by Design** — validação de entrada com Zod, sanitização, autenticação em toda rota protegida.
 
-## Padrões de Código
+## Padrões de Código (Limites Rígidos)
 
-- **Funções**: máximo 30 linhas, uma responsabilidade
-- **Arquivos**: máximo 300 linhas
-- **Nomenclatura**: camelCase (variáveis/funções), PascalCase (classes), UPPER_SNAKE_CASE (constantes), snake_case (banco de dados)
-- **Nomes de arquivos**: kebab-case
-- **Commits**: semânticos (feat, fix, chore, refactor, docs, test)
-- **Erros**: nunca catch vazio, sempre logs estruturados com contexto
-- **Documentação**: JSDoc/Docstrings para funções públicas
+- **Funções**: máximo 30 linhas, uma responsabilidade.
+- **Arquivos**: máximo 300 linhas.
+- **Nomenclatura**: camelCase (variáveis/funções), PascalCase (classes), UPPER_SNAKE_CASE (constantes), snake_case (banco de dados).
+- **Erros**: NUNCA use `catch` vazio. Sempre use logs estruturados com contexto.
+- **Comentários**: NUNCA deixe `// TODO` ou `// FIXME` no código final. Entregue código production-ready.
 
 ## Stack Padrão
 
@@ -39,26 +48,15 @@ Quando não especificado pelo usuário, usar:
 
 | Camada | Tecnologia |
 |--------|-----------|
-| Frontend | React / Next.js + TypeScript + Tailwind CSS |
+| Frontend | Next.js (App Router) + TypeScript + Tailwind CSS + Shadcn UI |
 | Backend | Node.js + Fastify + TypeScript |
 | ORM | Prisma |
 | Database | PostgreSQL |
 | Cache | Redis |
 | Auth | JWT + bcrypt |
 | Validação | Zod |
-| Testes | Jest + Supertest + Playwright |
-| Infra | Docker + Docker Compose |
-| CI/CD | GitHub Actions |
-
-## Qualidade Obrigatória
-
-Todo código gerado deve ser:
-
-- **Production-ready** — sem TODOs, sem placeholders, sem código comentado
-- **Bem documentado** — README, comentários em lógica complexa, swagger para APIs
-- **Modular** — importável e reutilizável
-- **Testado** — cobertura mínima de 80%
-- **Seguro** — input validation, rate limiting, CORS configurado
+| Testes | Jest + React Testing Library |
+| Infra | GitHub |
 
 ## Estrutura de Projeto Backend
 
@@ -67,11 +65,11 @@ src/
 ├── controllers/    # Rotas e request handling
 ├── services/       # Lógica de negócio
 ├── repositories/   # Acesso a dados
-├── models/         # Entidades e DTOs
-├── middlewares/     # Auth, error handling, validation
+├── models/         # Entidades e DTOs (Zod)
+├── middlewares/    # Auth, error handling, validation
 ├── routes/         # Definição de rotas
 ├── utils/          # Helpers
-├── config/         # Configurações
+├── config/         # Configurações (Env)
 └── app.ts          # Entry point
 ```
 
@@ -82,11 +80,10 @@ src/
 ├── components/     # Componentes reutilizáveis
 │   ├── ui/         # Componentes base (Button, Input, etc.)
 │   └── layout/     # Layout components (Header, Sidebar, etc.)
-├── pages/          # Pages/Routes
-├── hooks/          # Custom hooks
-├── services/       # API calls
-├── stores/         # Estado global
-├── styles/         # CSS/Tailwind
+├── app/            # Pages/Routes (Next.js App Router)
+├── hooks/          # Custom hooks (React Query)
+├── services/       # API calls (não use axios)
+├── stores/         # Estado global (Zustand)
 ├── utils/          # Helpers
-└── types/          # TypeScript types
+└── types/          # TypeScript types (gerados da API)
 ```

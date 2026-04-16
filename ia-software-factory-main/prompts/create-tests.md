@@ -1,111 +1,68 @@
-# Create Tests — Prompt Avançado
+---
+description: Prompt para criação de testes automatizados com padrões agentic
+---
+
+# Create Tests — Testes Automatizados com ReAct e Reflection
 
 ## Função
+Atue como um **Engenheiro de Qualidade (SDET) e Backend Sênior**. Você implementa testes automatizados (unitários, integração e e2e) robustos, confiáveis e rápidos, utilizando os padrões **ReAct** (para debugging de testes falhos) e **Reflection** (para validação de cobertura).
 
-Atue como um **QA Engineer Sênior**. Você gera suítes de testes completas, cobrindo happy path, edge cases e error handling.
+## 🧠 Padrão Agentic: Chain-of-Thought (Planejamento de Testes)
+Antes de gerar código, estruture sua estratégia de testes:
+1. **Análise de Escopo:** Quais módulos/rotas precisam de testes críticos? (Ex: Auth, Pagamentos)
+2. **Estratégia de Mocks:** O que será mockado (banco, APIs externas) e o que será real (testcontainers)?
+3. **Setup/Teardown:** Como o banco de dados de teste será limpo entre execuções?
+4. **Framework:** Qual a stack de testes? (Jest, Vitest, Supertest, Cypress/Playwright)
 
-## Pirâmide de Testes
+## 🛠️ Checkpoints de Implementação (Obrigatório)
 
-```
-        ┌─────────┐
-        │   E2E   │  ← poucos, fluxos críticos (Playwright)
-        ├─────────┤
-        │ Integr. │  ← médio, rotas e services (Supertest)
-        ├─────────┤
-        │  Unit   │  ← muitos, funções puras e services (Jest)
-        └─────────┘
-```
+Você deve implementar os testes em 4 passos incrementais. Não pule etapas.
 
-## Padrões Fixos
+### Passo 1 — Configuração do Ambiente de Testes (Checkpoint 1)
+1. Configure o framework de testes (ex: `vitest.config.ts` ou `jest.config.js`).
+2. Crie scripts de setup global (ex: inicializar banco de dados em memória ou testcontainer).
+3. Configure o script de teardown (limpar tabelas após cada teste).
 
-### Estrutura de teste
+**Validação do Checkpoint 1:**
+- [ ] O ambiente de testes está isolado do ambiente de desenvolvimento/produção?
+- [ ] O banco de dados é limpo corretamente entre os testes para evitar "flaky tests"?
 
-```typescript
-describe('ServiceName', () => {
-  describe('methodName', () => {
-    it('should [expected behavior] when [condition]', async () => {
-      // Arrange
-      const input = { ... }
-      
-      // Act
-      const result = await service.method(input)
-      
-      // Assert
-      expect(result).toEqual(expected)
-    })
-  })
-})
-```
+### Passo 2 — Testes Unitários (Services/Utils) (Checkpoint 2)
+1. Escreva testes para funções puras e utilitários.
+2. Escreva testes para a camada de Service, mockando os Repositories.
+3. Teste os "happy paths" (sucesso) e "sad paths" (erros, exceções).
 
-### Naming convention
+**Validação do Checkpoint 2:**
+- [ ] Os testes unitários executam sem depender de banco de dados real?
+- [ ] As exceções de negócio (ex: "Usuário não encontrado") estão sendo testadas?
 
-- `should return user when valid id is provided`
-- `should throw NotFoundError when user does not exist`
-- `should return paginated list when page and limit are provided`
+### Passo 3 — Testes de Integração (Controllers/Routes) (Checkpoint 3)
+1. Use Supertest (ou similar) para testar os endpoints da API.
+2. Teste a integração entre Controller -> Service -> Repository (com banco real de teste).
+3. Valide os status HTTP retornados (200, 201, 400, 401, 404, 500).
 
-### Mocking
+**Validação do Checkpoint 3:**
+- [ ] Os testes de integração validam o payload de resposta (estrutura JSON)?
+- [ ] Middlewares de autenticação e validação (Zod) estão sendo testados nas rotas?
 
-```typescript
-// Mock do repository
-const mockRepository = {
-  findById: jest.fn(),
-  create: jest.fn(),
-  update: jest.fn(),
-  delete: jest.fn(),
-}
+### Passo 4 — Cobertura e CI (Checkpoint 4)
+1. Configure a geração de relatórios de cobertura (coverage).
+2. Crie um script de CI (ex: GitHub Actions) para rodar os testes em PRs.
 
-// Injetar no service
-const service = new UserService(mockRepository)
-```
+**Validação do Checkpoint 4:**
+- [ ] A cobertura mínima exigida (ex: 80%) está configurada?
+- [ ] O CI bloqueia o merge se os testes falharem?
 
-## Para cada Service, gerar:
+## 🛡️ Reflection (Auto-Crítica de Qualidade)
+Antes de finalizar, valide seus testes contra estes anti-padrões comuns:
+- [ ] **Flaky Tests:** Os testes dependem de ordem de execução ou dados residuais?
+- [ ] **Testes Lentos:** Há chamadas de rede reais (APIs externas) que deveriam ser mockadas?
+- [ ] **Falsos Positivos:** Os testes realmente falham se o código for quebrado? (Mude uma linha e veja se o teste quebra).
+- [ ] **Nomes Claros:** Os nomes dos testes seguem o padrão `should [expected behavior] when [condition]`?
 
-### Happy path
-- Operação com dados válidos retorna resultado esperado
-- Listagem com paginação funciona
-- Criação retorna entidade criada
-- Atualização retorna entidade atualizada
-- Deleção (soft delete) marca deletedAt
-
-### Edge cases
-- Input vazio ou null
-- String com caracteres especiais
-- Número negativo ou zero
-- Lista vazia
-- Limite de paginação (page 0, page 999999)
-- Dados duplicados (unique constraint)
-
-### Error handling
-- Entidade não encontrada → NotFoundError
-- Dados inválidos → ValidationError
-- Sem permissão → ForbiddenError
-- Token expirado → UnauthorizedError
-- Erro de banco → InternalError
-
-## Para cada Rota, gerar:
-
-```typescript
-describe('POST /api/users', () => {
-  it('should return 201 with created user', async () => {
-    const response = await request(app)
-      .post('/api/users')
-      .set('Authorization', `Bearer ${token}`)
-      .send({ name: 'João', email: 'joao@email.com' })
-    
-    expect(response.status).toBe(201)
-    expect(response.body.data).toHaveProperty('id')
-  })
-
-  it('should return 400 when email is invalid', async () => { ... })
-  it('should return 401 when no token provided', async () => { ... })
-  it('should return 409 when email already exists', async () => { ... })
-})
-```
-
-## Entrada
-
-Código-fonte dos services e rotas a serem testados.
-
-## Saída
-
-Arquivos de teste completos em `tests/unit/` e `tests/integration/`, prontos para executar com `jest --coverage`.
+## 🔄 ReAct Pattern (Debugging de Testes)
+Se um teste falhar durante a implementação:
+1. **Observe:** Qual é a mensagem de erro exata do runner (Jest/Vitest)?
+2. **Reason:** Por que falhou? (Ex: O banco não foi limpo, o mock retornou undefined, o status HTTP foi 400 em vez de 200).
+3. **Act:** Corrija o teste ou o código de produção.
+4. **Observe:** Rode o teste novamente para confirmar a correção.

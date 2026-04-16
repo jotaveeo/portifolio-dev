@@ -1,5 +1,5 @@
 /* ============================================================
-   BIO PAGE v2 — Dark Professional / Vapor Tech
+   BIO PAGE v3 — Dark Professional / Vapor Tech
    Isolado do estilo global do portfólio
    ============================================================ */
 
@@ -274,6 +274,7 @@
 .bio-v2-stats {
   width: 100%;
   display: flex;
+  flex-direction: row !important;
   gap: 0.6rem;
 }
 
@@ -542,4 +543,370 @@
   .bio-v2-stat-number { font-size: 1.1rem; }
   .bio-v2-stats { gap: 0.4rem; }
   .bio-v2-stat-card { padding: 0.75rem 0.5rem; }
+}
+
+/* ============================================================
+   BIO v3 — New Section Components
+   ============================================================ */
+
+/* ── Generic Section Wrapper ─────────────────────────────── */
+.bio-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+/* ── Section Divider ─────────────────────────────────────── */
+.bio-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-accent),
+    transparent
+  );
+  opacity: 0.45;
+}
+
+/* ── Section Label ───────────────────────────────────────── */
+.bio-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  border-radius: 6px;
+}
+
+/* ── Project Cards ───────────────────────────────────────── */
+.bio-projects-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.bio-project-card {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  text-align: left;
+}
+
+.bio-project-card:hover {
+  border-color: var(--project-color, var(--border-accent));
+  box-shadow: 0 6px 28px color-mix(in srgb, var(--project-color, var(--accent)) 30%, transparent);
+}
+
+.bio-project-accent {
+  width: 4px;
+  flex-shrink: 0;
+  background: var(--project-color, var(--accent));
+  opacity: 0.9;
+}
+
+.bio-project-body {
+  flex: 1;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.bio-project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.bio-project-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.bio-project-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.18rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.bio-project-badge--live {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+.bio-project-badge--new {
+  color: var(--accent);
+  background: var(--accent-dim);
+  border-color: var(--border-accent);
+}
+
+.bio-project-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.bio-project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.2rem;
+}
+
+.bio-project-tag {
+  font-size: 0.66rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.bio-project-arrow {
+  color: var(--text-dim);
+  transition: color var(--transition), transform var(--transition);
+}
+
+.bio-project-card:hover .bio-project-arrow {
+  color: var(--project-color, var(--accent));
+  transform: translateX(3px) translateY(-3px);
+}
+
+/* ── Services Grid ───────────────────────────────────────── */
+.bio-services-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.bio-service-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.bio-service-card:hover {
+  border-color: color-mix(in srgb, var(--service-color, var(--accent)) 50%, transparent);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--service-color, var(--accent)) 15%, transparent);
+}
+
+.bio-service-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--service-color, var(--accent)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--service-color, var(--accent)) 30%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--service-color, var(--accent));
+  transition: background var(--transition);
+}
+
+.bio-service-card:hover .bio-service-icon {
+  background: color-mix(in srgb, var(--service-color, var(--accent)) 20%, transparent);
+}
+
+.bio-service-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.1rem;
+}
+
+.bio-service-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ── CTA Section ─────────────────────────────────────────── */
+.bio-cta-section {
+  width: 100%;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, rgba(242, 87, 43, 0.07) 0%, rgba(99, 102, 241, 0.05) 100%);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius);
+  gap: 1rem;
+}
+
+.bio-cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.bio-cta-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.bio-cta-sub {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+}
+
+.bio-cta-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.bio-cta-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: box-shadow var(--transition), opacity var(--transition);
+}
+
+.bio-cta-btn--primary {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+}
+
+.bio-cta-btn--primary:hover {
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+}
+
+.bio-cta-btn--secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.bio-cta-btn--secondary:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+/* ── Social Grid ─────────────────────────────────────────── */
+.bio-social-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+@media (min-width: 360px) {
+  .bio-social-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.bio-social-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.9rem 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition), color var(--transition);
+  color: var(--text-muted);
+  overflow: hidden;
+}
+
+.bio-social-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--social-color, var(--accent)) 10%, transparent);
+  opacity: 0;
+  transition: opacity var(--transition);
+  border-radius: inherit;
+}
+
+.bio-social-card:hover {
+  border-color: color-mix(in srgb, var(--social-color, var(--accent)) 55%, transparent);
+  color: var(--social-color, var(--accent));
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--social-color, var(--accent)) 20%, transparent);
+}
+
+.bio-social-card:hover::before {
+  opacity: 1;
+}
+
+.bio-social-icon {
+  position: relative;
+  z-index: 1;
+  transition: transform var(--transition);
+}
+
+.bio-social-card:hover .bio-social-icon {
+  transform: scale(1.15);
+}
+
+.bio-social-label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bio-social-arrow {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  opacity: 0;
+  color: var(--social-color, var(--accent));
+  transition: opacity var(--transition);
+}
+
+.bio-social-card:hover .bio-social-arrow {
+  opacity: 0.6;
+}
+
+/* ── Responsive tweaks ───────────────────────────────────── */
+@media (max-width: 380px) {
+  .bio-v2-name { font-size: 1.8rem; }
+  .bio-v2-stat-number { font-size: 1.1rem; }
+  .bio-v2-stats { gap: 0.4rem; }
+  .bio-v2-stat-card { padding: 0.75rem 0.5rem; }
+  .bio-cta-buttons { flex-direction: column; }
 }

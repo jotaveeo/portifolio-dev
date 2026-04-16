@@ -1,75 +1,97 @@
-# Generate Backend — Prompt Avançado
+---
+description: Gerar código backend completo a partir da arquitetura e schema do banco usando Checkpoints e Reflection
+---
 
-## Função
+# /generate-backend — Geração de Backend (Backend Agent)
 
-Atue como um **Engenheiro Backend Sênior**. Você gera código backend completo, production-ready, seguindo Clean Architecture.
+## Pré-requisito
 
-## Padrões Fixos (NUNCA ALTERE)
+A arquitetura (`docs/architecture.md`) e o schema do banco (`prisma/schema.prisma`) devem existir.
 
-### Arquitetura de camadas obrigatória
+## Passo 1 — Ler Contexto
 
-```
-src/
-├── config/          # Configurações (env, database, auth)
-├── controllers/     # Request handling — recebe request, chama service, retorna response
-├── services/        # Lógica de negócio — TODA regra de negócio fica aqui
-├── repositories/    # Acesso a dados — queries, CRUD, Prisma calls
-├── models/          # DTOs e Zod schemas de validação
-├── middlewares/     # Auth, error handler, validation, rate limiting
-├── routes/          # Registro de rotas com prefixo
-├── utils/           # Helpers puros (sem side effects)
-├── types/           # TypeScript types e interfaces
-├── app.ts           # Setup do Fastify (plugins, middlewares, routes)
-└── server.ts        # Entry point (listen)
-```
+Leia a arquitetura e o schema do banco. Identifique as entidades, relacionamentos e regras de negócio.
 
-### Padrões de código obrigatórios
+## Passo 2 — Scaffold do Projeto (Checkpoint 1)
 
-- **Controller**: recebe `request` e `reply`, extrai params/body/query, chama service, retorna status + JSON
-- **Service**: recebe dados tipados, executa lógica, chama repository, retorna resultado ou lança erro tipado
-- **Repository**: método por operação (findById, findMany, create, update, delete), retorna dados do Prisma
-- **Middleware auth**: verifica JWT no header, decodifica, injeta `request.user`
-- **Error handler**: catch global, mapeia erros para HTTP status, retorna `{ error, message, statusCode }`
-- **Validation**: Zod schema por rota, validação no controller ou via middleware
+1. Inicialize o projeto Node.js + TypeScript.
+2. Instale dependências: `fastify`, `@fastify/cors`, `@fastify/jwt`, `prisma`, `@prisma/client`, `zod`, `pino`.
+3. Configure `tsconfig.json` com paths e strict mode.
+4. Crie `src/config/env.ts` (variáveis de ambiente com Zod validation).
+5. Crie `src/config/database.ts` (Prisma client singleton).
 
-### Padrões de resposta da API
+**Validação do Checkpoint 1:**
+- Execute `npm run build` e confirme que compila.
+- Teste a conexão com o banco.
+- *Se falhar, use o padrão ReAct (Thought -> Action -> Observation) para corrigir.*
 
-```typescript
-// Sucesso
-{ data: T, message: string }
+## Passo 3 — Models e Repositories (Checkpoint 2)
 
-// Sucesso com paginação
-{ data: T[], meta: { total, page, limit, totalPages } }
+Atue como o **Backend Agent** e gere:
 
-// Erro
-{ error: string, message: string, statusCode: number }
-```
+1. **Models/DTOs** — `src/models/` (Zod schemas para input validation).
+2. **Repositories** — `src/repositories/` (um por entidade, CRUD + queries customizadas).
 
-### Auth obrigatório
+**Validação do Checkpoint 2:**
+- Confirme que os tipos do Zod batem com o schema do Prisma.
+- Teste uma query de exemplo.
+- *Se falhar, use o padrão ReAct para corrigir.*
 
-```typescript
-// POST /auth/register → { data: { user, token } }
-// POST /auth/login    → { data: { user, token } }
-// POST /auth/refresh  → { data: { token } }
-// GET  /auth/me       → { data: { user } }
-```
+## Passo 4 — Services e Lógica de Negócio (Checkpoint 3)
 
-## Entrada
+Gere:
 
-Arquitetura do sistema + Prisma schema.
+1. **Services** — `src/services/` (lógica de negócio, um por domínio).
 
-## Saída Esperada
+**Validação do Checkpoint 3 (Reflection):**
+Antes de prosseguir, faça uma auto-crítica:
+- [ ] Cada função tem menos de 30 linhas?
+- [ ] Há testes unitários para a lógica crítica?
+- [ ] Não há `any` em TypeScript?
+- [ ] O tratamento de erros está correto (lançando exceções customizadas)?
 
-1. Todos os arquivos da estrutura acima, implementados e funcionais
-2. `.env.example` com todas as variáveis
-3. `package.json` com scripts: dev, build, start, test, lint
-4. Testes unitários para cada service (Jest)
-5. Testes de integração para cada rota (Supertest)
+*Se algum critério falhar, refatore o código silenciosamente.*
 
-## Regras
+## Passo 5 — Controllers, Middlewares e Rotas (Checkpoint 4)
 
-- Siga `system/coding-standards.md`
-- Zero TODO, zero placeholder, zero console.log (use logger)
-- Tipagem completa — sem `any`
-- Cada arquivo ≤ 300 linhas
-- Cada função ≤ 30 linhas
+Gere:
+
+1. **Controllers** — `src/controllers/` (request handling, chama services).
+2. **Middlewares**:
+   - `src/middlewares/auth.ts` — JWT verification.
+   - `src/middlewares/error-handler.ts` — Error handling centralizado.
+   - `src/middlewares/validate.ts` — Zod validation middleware.
+3. **Routes** — `src/routes/` (registra controllers com prefixo).
+4. **App** — `src/app.ts` (Fastify setup, plugins, routes).
+5. **Server** — `src/server.ts` (entry point, listen).
+
+**Validação do Checkpoint 4:**
+- As rotas estão protegidas corretamente?
+- A validação Zod está sendo aplicada antes do controller?
+- O error handler captura exceções não tratadas?
+
+## Passo 6 — Auth e Segurança (Checkpoint 5)
+
+Implemente o fluxo completo de autenticação:
+- POST `/auth/register` — criar usuário, hash senha, retornar token.
+- POST `/auth/login` — validar credenciais, gerar JWT.
+- POST `/auth/refresh` — refresh token.
+- Middleware de auth em rotas protegidas.
+
+**Validação do Checkpoint 5:**
+- As senhas estão sendo cacheadas com bcrypt (10+ rounds)?
+- Os tokens JWT têm expiração curta (access) e longa (refresh)?
+
+## Passo 7 — Testes e Documentação (Checkpoint Final)
+
+1. Gere testes com Jest (unitários para services, integração para rotas).
+2. Gere documentação Swagger/OpenAPI das rotas (`docs/openapi.yaml`).
+
+## Passo 8 — Validação Final e Entrega
+
+Execute `npm run build` e `npm test` para validar que tudo compila e passa sem erros.
+
+Apresente um resumo ao usuário e pergunte:
+- "O backend está pronto e validado. Posso prosseguir para o frontend (`/generate-frontend`)?"
+
+// turbo-all

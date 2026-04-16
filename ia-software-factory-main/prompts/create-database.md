@@ -1,99 +1,61 @@
-# Create Database — Prompt Avançado
+---
+description: Gerar schema do banco de dados e diagrama ER a partir da arquitetura usando Reflection
+---
 
-## Função
+# /create-database — Modelagem de Banco de Dados (Database Agent)
 
-Atue como um **Engenheiro de Banco de Dados Sênior**. Você gera modelagem completa com Prisma, otimizada e production-ready.
+## Pré-requisito
 
-## Presets de Modelagem
+A arquitetura do sistema deve existir (`docs/architecture.md`).
 
-### Preset A — SaaS Multi-tenant
-Entidades base obrigatórias:
-```prisma
-User, Organization, OrganizationMember, Subscription, Plan, 
-AuditLog, Notification, Session
-```
+## Passo 1 — Ler Contexto
 
-### Preset B — E-commerce / Marketplace
-Entidades base obrigatórias:
-```prisma
-User, Product, Category, Order, OrderItem, Payment, 
-Review, Address, Cart, CartItem
-```
+Leia a arquitetura gerada no passo anterior. Identifique as entidades principais e seus relacionamentos.
 
-### Preset C — Plataforma de Conteúdo
-Entidades base obrigatórias:
-```prisma
-User, Post, Category, Tag, Comment, Like, 
-Follow, Notification, Media
-```
+## Passo 2 — Raciocínio de Modelagem (Chain-of-Thought)
 
-### Preset D — API Service
-Entidades base obrigatórias:
-```prisma
-User, ApiKey, RequestLog, Webhook, 
-RateLimit, Usage
-```
+Antes de gerar o schema, pense passo a passo em um bloco `<thought>`:
 
-## Padrões Fixos (NUNCA ALTERE)
+<thought>
+1. **Normalização:** As entidades estão na 3ª Forma Normal (3NF)? Há redundância de dados?
+2. **Relacionamentos:** Quais são 1:1, 1:N e N:M? Preciso de tabelas associativas (pivot tables)?
+3. **Performance:** Quais colunas serão frequentemente usadas em cláusulas `WHERE` ou `JOIN`? (Essas precisam de índices).
+4. **Segurança/Auditoria:** Preciso de `createdAt`, `updatedAt`, `deletedAt` (soft delete) em todas as tabelas?
+5. **Tipos de Dados:** Estou usando UUIDs para chaves primárias (segurança) ou Inteiros (performance)?
+</thought>
 
-### Convenções de Schema
+## Passo 3 — Gerar Artefatos (O Schema)
 
-```prisma
-// TODA tabela deve ter:
-model Example {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  deletedAt DateTime? @map("deleted_at")  // soft delete
-  
-  @@map("examples")  // snake_case no banco
-}
-```
+Atue como o **Database Agent** e gere a modelagem contendo:
 
-### Regras obrigatórias
+1. **Diagrama ER** — Use sintaxe Mermaid (`erDiagram`) para desenhar as tabelas e relacionamentos.
+2. **Schema Prisma Completo** — O arquivo `schema.prisma` com:
+   - Modelos (tabelas)
+   - Relacionamentos explícitos (`@relation`)
+   - Índices (`@@index`)
+   - Restrições únicas (`@unique`, `@@unique`)
+   - Campos de auditoria (`createdAt`, `updatedAt`)
+   - Enums para status/tipos fixos
+3. **Seed Inicial** — Um script `seed.ts` para popular o banco com dados de teste (admin, roles, dados mockados).
+4. **Estratégia de Índices** — Lista justificada dos índices criados para otimizar queries.
 
-- UUIDs como primary keys (`@default(uuid())`)
-- `@@map()` em todo model (snake_case)
-- `@map()` em campos compostos (camelCase no Prisma, snake_case no banco)
-- Campos de auditoria em TODA tabela (`createdAt`, `updatedAt`)
-- Soft delete (`deletedAt`) em tabelas críticas (users, orders, posts)
-- `@@index()` para campos usados em WHERE e ORDER BY
-- `@@unique()` para constraints de negócio
-- Relations com `onDelete` explícito (Cascade, SetNull, Restrict)
-- Enums para campos com valores fixos (status, role, priority)
+## Passo 4 — Auto-Crítica (Reflection)
 
-### Padrão de enum
+Antes de me mostrar o schema, faça uma auto-crítica rigorosa:
+- [ ] O schema Prisma compila sem erros de sintaxe?
+- [ ] Todos os relacionamentos bidirecionais estão corretos? (Prisma exige ambos os lados).
+- [ ] Há índices nas chaves estrangeiras (FKs) para evitar table scans em JOINs?
+- [ ] As senhas estão modeladas como `String` (para armazenar o hash bcrypt)?
+- [ ] Há soft delete (`deletedAt DateTime?`) nas tabelas críticas?
 
-```prisma
-enum UserRole {
-  ADMIN
-  USER
-  VIEWER
-}
+*Se encontrar falhas (ex: falta de índices em FKs), corrija o schema silenciosamente antes de entregar.*
 
-enum Status {
-  ACTIVE
-  INACTIVE
-  SUSPENDED
-}
-```
+## Passo 5 — Salvar e Validar
 
-## Entrada
+1. Salve o schema em `prisma/schema.prisma`.
+2. Salve o seed em `prisma/seed.ts`.
+3. Apresente o diagrama ER ao usuário e pergunte:
+   - "O modelo de dados atende a todos os requisitos da arquitetura?"
+   - "Posso prosseguir para a geração do backend (`/generate-backend`)?"
 
-Especificação do sistema com entidades e regras de negócio.
-
-## Saída Esperada
-
-1. **Diagrama ER** — Mermaid diagram completo
-2. **`prisma/schema.prisma`** — Schema completo e funcional
-3. **`prisma/seed.ts`** — Seed com dados realistas (não "test", "example")
-4. **Índices** — Lista com justificativa por índice
-5. **Queries complexas** — Exemplos de queries otimizadas para os casos de uso principais
-
-## Regras
-
-- Siga `system/architecture-rules.md`
-- Normalização 3NF mínimo
-- Sem campos JSON para dados estruturados (use tabelas relacionais)
-- Nomes de tabela no plural, snake_case
-- Nomes de campos descritivos (não abreviados)
+// turbo-all

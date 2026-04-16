@@ -1,42 +1,61 @@
 ---
-description: Gerar modelagem completa do banco de dados a partir da arquitetura
+description: Gerar schema do banco de dados e diagrama ER a partir da arquitetura usando Reflection
 ---
 
-# /create-database — Criação de Banco de Dados
+# /create-database — Modelagem de Banco de Dados (Database Agent)
 
 ## Pré-requisito
 
-A arquitetura do sistema deve existir (saída do `/design-architecture`).
+A arquitetura do sistema deve existir (`docs/architecture.md`).
 
-## Passo 1 — Ler arquitetura
+## Passo 1 — Ler Contexto
 
-Leia o documento de arquitetura e identifique todas as entidades.
+Leia a arquitetura gerada no passo anterior. Identifique as entidades principais e seus relacionamentos.
 
-## Passo 2 — Gerar modelagem
+## Passo 2 — Raciocínio de Modelagem (Chain-of-Thought)
 
-Atue como o **Database Agent** (`agents/database-agent.md`) e gere:
+Antes de gerar o schema, pense passo a passo em um bloco `<thought>`:
 
-1. **Diagrama ER** — Mermaid diagram com todas as entidades e relacionamentos
-2. **Prisma Schema** — Arquivo `schema.prisma` completo com:
-   - Todos os models com campos tipados
-   - Relations entre models
-   - Campos de auditoria (`createdAt`, `updatedAt`) em toda tabela
-   - Soft delete (`deletedAt`) quando aplicável
-   - UUIDs como primary keys (`@default(uuid())`)
-   - Índices para queries frequentes (`@@index`)
-   - Unique constraints onde necessário
-3. **Migration inicial** — Comando para gerar migration
-4. **Seed** — Arquivo `seed.ts` com dados iniciais para desenvolvimento
-5. **Índices recomendados** — Lista com justificativa
+<thought>
+1. **Normalização:** As entidades estão na 3ª Forma Normal (3NF)? Há redundância de dados?
+2. **Relacionamentos:** Quais são 1:1, 1:N e N:M? Preciso de tabelas associativas (pivot tables)?
+3. **Performance:** Quais colunas serão frequentemente usadas em cláusulas `WHERE` ou `JOIN`? (Essas precisam de índices).
+4. **Segurança/Auditoria:** Preciso de `createdAt`, `updatedAt`, `deletedAt` (soft delete) em todas as tabelas?
+5. **Tipos de Dados:** Estou usando UUIDs para chaves primárias (segurança) ou Inteiros (performance)?
+</thought>
 
-## Passo 3 — Criar arquivos
+## Passo 3 — Gerar Artefatos (O Schema)
 
-Crie os arquivos no workspace:
-- `prisma/schema.prisma`
-- `prisma/seed.ts`
+Atue como o **Database Agent** e gere a modelagem contendo:
 
-## Passo 4 — Validar
+1. **Diagrama ER** — Use sintaxe Mermaid (`erDiagram`) para desenhar as tabelas e relacionamentos.
+2. **Schema Prisma Completo** — O arquivo `schema.prisma` com:
+   - Modelos (tabelas)
+   - Relacionamentos explícitos (`@relation`)
+   - Índices (`@@index`)
+   - Restrições únicas (`@unique`, `@@unique`)
+   - Campos de auditoria (`createdAt`, `updatedAt`)
+   - Enums para status/tipos fixos
+3. **Seed Inicial** — Um script `seed.ts` para popular o banco com dados de teste (admin, roles, dados mockados).
+4. **Estratégia de Índices** — Lista justificada dos índices criados para otimizar queries.
 
-Pergunte ao usuário: "Schema aprovado? Posso prosseguir para o backend?"
+## Passo 4 — Auto-Crítica (Reflection)
+
+Antes de me mostrar o schema, faça uma auto-crítica rigorosa:
+- [ ] O schema Prisma compila sem erros de sintaxe?
+- [ ] Todos os relacionamentos bidirecionais estão corretos? (Prisma exige ambos os lados).
+- [ ] Há índices nas chaves estrangeiras (FKs) para evitar table scans em JOINs?
+- [ ] As senhas estão modeladas como `String` (para armazenar o hash bcrypt)?
+- [ ] Há soft delete (`deletedAt DateTime?`) nas tabelas críticas?
+
+*Se encontrar falhas (ex: falta de índices em FKs), corrija o schema silenciosamente antes de entregar.*
+
+## Passo 5 — Salvar e Validar
+
+1. Salve o schema em `prisma/schema.prisma`.
+2. Salve o seed em `prisma/seed.ts`.
+3. Apresente o diagrama ER ao usuário e pergunte:
+   - "O modelo de dados atende a todos os requisitos da arquitetura?"
+   - "Posso prosseguir para a geração do backend (`/generate-backend`)?"
 
 // turbo-all
