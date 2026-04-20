@@ -15,6 +15,7 @@ import {
   Globe,
   ExternalLink,
 } from "lucide-react";
+import { useTranslation, Trans } from "react-i18next";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const CONTACT_METHODS = [
@@ -140,6 +141,7 @@ function InputField({ label, id, name, type = "text", value, onChange, placehold
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 export function ContactSection() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     from_name: "",
     to_name: "João Vitor",
@@ -170,7 +172,7 @@ export function ContactSection() {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      setErrorMsg("Erro de configuração: chaves do EmailJS ausentes no .env");
+      setErrorMsg(t('contact.form.errorConfig'));
       setIsLoading(false);
       return;
     }
@@ -188,7 +190,7 @@ export function ContactSection() {
       () => { setIsSent(true); setIsLoading(false); handleClear(); },
       (err) => {
         console.error("EmailJS error:", err);
-        setErrorMsg("Não foi possível enviar. Verifique sua conexão e tente novamente.");
+        setErrorMsg(t('contact.form.errorSend'));
         setIsLoading(false);
       }
     );
@@ -212,19 +214,19 @@ export function ContactSection() {
           variants={stagger}
         >
           <motion.p variants={fadeUp} className="text-sm font-mono text-primary mb-3 tracking-widest uppercase">
-            &gt;_ contato.init()
+            &gt;_ {t('contact.label')}
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="text-4xl sm:text-5xl xl:text-6xl font-bold gradient-text mb-4 righteous-regular"
           >
-            Vamos Construir Algo?
+            {t('contact.title')}
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed bree-serif-regular"
           >
-            Pronto para transformar sua ideia em produto. Respondo em até 24h.
+            {t('contact.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -240,7 +242,7 @@ export function ContactSection() {
             {/* Contact methods */}
             <motion.div variants={fadeUp} className="card-cyberpunk p-6 space-y-3">
               <h3 className="text-sm font-mono text-primary uppercase tracking-widest mb-4">
-                &gt;_ Canais de Contato
+                &gt;_ {t('contact.channels')}
               </h3>
               {CONTACT_METHODS.map((method) => (
                 <motion.a
@@ -256,9 +258,9 @@ export function ContactSection() {
                     {method.icon}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs text-muted-foreground">{method.label}</p>
+                    <p className="text-xs text-muted-foreground">{method.label === "WhatsApp" ? "WhatsApp" : method.label}</p>
                     <p className={`text-sm font-semibold truncate group-hover:${method.color} transition-colors`}>
-                      {method.value}
+                      {method.label === "WhatsApp" ? t('contact.whatsapp') : method.value}
                     </p>
                   </div>
                   <ExternalLink className="w-4 h-4 text-muted-foreground/40 ml-auto flex-shrink-0 group-hover:text-muted-foreground transition-colors" />
@@ -269,7 +271,7 @@ export function ContactSection() {
             {/* Social links */}
             <motion.div variants={fadeUp} className="card-cyberpunk p-6">
               <h3 className="text-sm font-mono text-primary uppercase tracking-widest mb-4">
-                &gt;_ Redes Sociais
+                &gt;_ {t('contact.socials')}
               </h3>
               <div className="flex gap-3">
                 {SOCIAL_LINKS.map((s) => (
@@ -294,8 +296,8 @@ export function ContactSection() {
             <motion.div variants={fadeUp} className="card-cyberpunk p-5 flex items-center gap-4">
               <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
               <div>
-                <p className="text-sm font-semibold text-foreground">Disponível para projetos</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Freelance & CLT/PJ · Resposta em até 24h</p>
+                <p className="text-sm font-semibold text-foreground">{t('contact.availability.title')}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{t('contact.availability.desc')}</p>
               </div>
             </motion.div>
           </motion.div>
@@ -328,12 +330,12 @@ export function ContactSection() {
                     <CheckCircle className="w-10 h-10 text-green-400" />
                   </motion.div>
                   <div>
-                    <h3 className="text-2xl font-bold text-green-400 mb-2">Mensagem Enviada!</h3>
-                    <p className="text-muted-foreground">Obrigado pelo contato — responderei em breve 🚀</p>
+                    <h3 className="text-2xl font-bold text-green-400 mb-2">{t('contact.form.successTitle')}</h3>
+                    <p className="text-muted-foreground">{t('contact.form.successMsg')}</p>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm">
                     <button onClick={() => setIsSent(false)} className="btn-neon flex-1 py-3">
-                      Nova Mensagem
+                      {t('contact.form.newMsg')}
                     </button>
                     <a
                       href="https://wa.me/5588996047311"
@@ -357,33 +359,33 @@ export function ContactSection() {
                   <motion.div variants={fadeUp} className="mb-7">
                     <h3 className="text-xl sm:text-2xl font-bold gradient-text flex items-center gap-2 mb-1.5">
                       <MessageCircle className="w-6 h-6 text-accent" />
-                      Envie uma Mensagem
+                      {t('contact.form.header')}
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      Preencha o formulário e entrarei em contato o mais breve possível.
+                      {t('contact.form.subtitle')}
                     </p>
                   </motion.div>
 
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <InputField
-                        label="Nome"
+                        label={t('contact.form.name')}
                         id="from_name"
                         name="from_name"
                         value={formData.from_name}
                         onChange={handleChange}
-                        placeholder="Seu nome completo"
+                        placeholder={t('contact.form.namePlaceholder')}
                         required
                         hasError={!formData.from_name && !!errorMsg}
                       />
                       <InputField
-                        label="Email"
+                        label={t('contact.form.email')}
                         id="email"
                         name="email"
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="seu@email.com"
+                        placeholder={t('contact.form.emailPlaceholder')}
                         required
                         hasError={!formData.email && !!errorMsg}
                       />
@@ -391,12 +393,12 @@ export function ContactSection() {
 
                     <motion.div variants={fadeUp}>
                       <InputField
-                        label="Assunto"
+                        label={t('contact.form.subject')}
                         id="subject"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Ex: Landing page para minha empresa"
+                        placeholder={t('contact.form.subjectPlaceholder')}
                         required
                         hasError={!formData.subject && !!errorMsg}
                       />
@@ -404,12 +406,12 @@ export function ContactSection() {
 
                     <motion.div variants={fadeUp}>
                       <InputField
-                        label="Mensagem"
+                        label={t('contact.form.message')}
                         id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        placeholder="Conte sobre seu projeto, prazo e orçamento estimado..."
+                        placeholder={t('contact.form.messagePlaceholder')}
                         required
                         hasError={!formData.message && !!errorMsg}
                         textarea
@@ -442,12 +444,12 @@ export function ContactSection() {
                         {isLoading ? (
                           <>
                             <span className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                            Enviando...
+                            {t('contact.form.btnSending')}
                           </>
                         ) : (
                           <>
                             <Send className="w-4 h-4" />
-                            Enviar Mensagem
+                            {t('contact.form.btnSend')}
                           </>
                         )}
                       </motion.button>
@@ -458,7 +460,7 @@ export function ContactSection() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        Limpar
+                        {t('contact.form.btnClear')}
                       </motion.button>
                     </motion.div>
 
@@ -469,7 +471,7 @@ export function ContactSection() {
                     >
                       <Lock className="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" />
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Seus dados são tratados com sigilo e usados apenas para responder sua mensagem.
+                        {t('contact.form.secure')}
                       </p>
                     </motion.div>
                   </form>

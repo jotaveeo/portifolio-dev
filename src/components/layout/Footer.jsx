@@ -1,7 +1,9 @@
 import React from "react";
 import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -11,10 +13,10 @@ export const Footer = () => {
           {/* Logo/Name */}
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-xl font-bold gradient-text righteous-regular mb-2">
-              João Vitor Oliveira
+              {t('footerPort.name')}
             </h3>
             <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs leading-relaxed">
-              Desenvolvedor Full Stack apaixonado por criar interfaces modernas e escaláveis.
+              {t('footerPort.desc')}
             </p>
           </div>
 
@@ -59,13 +61,13 @@ export const Footer = () => {
 
         <div className="pt-8 border-t border-border/20 text-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {currentYear} João Vitor Oliveira. Todos os direitos reservados.
+            &copy; {currentYear} {t('footerPort.rights')}
           </p>
           <div className="flex items-center justify-center gap-2 mt-4 text-xs font-mono text-muted-foreground/60 uppercase tracking-widest">
-            <span>Desenvolvido com</span>
+            <span>{t('footerPort.builtWith')}</span>
             <span className="text-primary animate-pulse">💜</span>
-            <span>e muito</span>
-            <span className="text-accent underline underline-offset-4 decoration-accent/30 decoration-double">café</span>
+            <span>{t('footerPort.andLotsOf')}</span>
+            <span className="text-accent underline underline-offset-4 decoration-accent/30 decoration-double">{t('footerPort.coffee')}</span>
           </div>
         </div>
       </div>

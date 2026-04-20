@@ -1,9 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Code, Smartphone, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import trabalho from "/trabalho.jpeg";
 
 export const AboutSection = () => {
+  const { t } = useTranslation();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -37,10 +39,10 @@ export const AboutSection = () => {
           className="text-center mb-16"
         >
           <motion.h2 variants={itemVariants} className="text-4xl lg:text-5xl font-bold gradient-text mb-4 righteous-regular">
-            ...mas pode me chamar de João
+            {t('about.title1')}
           </motion.h2>
           <motion.p variants={itemVariants} className="text-xl text-muted-foreground max-w-3xl mx-auto bree-serif-regular">
-            Conheça a pessoa por trás dos códigos
+            {t('about.subtitle')}
           </motion.p>
         </motion.div>
 
@@ -54,19 +56,13 @@ export const AboutSection = () => {
           >
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-foreground">
-                Prazer, me chamo João! 👨🏽‍💻
+                {t('about.greeting')}
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Com anos de vivência em tecnologias, sou apaixonado por criar
-                soluções que fazem a diferença. Minha jornada começou com
-                curiosidade pela tecnologia e se transformou em uma carreira
-                dedicada à excelência no desenvolvimento de software.
+                {t('about.p1')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Um desenvolvedor dedicado e sempre em busca de novos desafios
-                e aprendizados. Acredito no poder da tecnologia para
-                transformar o mundo e estou comprometido em contribuir para
-                essa transformação.
+                {t('about.p2')}
               </p>
             </div>
 
@@ -76,17 +72,17 @@ export const AboutSection = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="card-cyberpunk p-5 text-center group relative cursor-pointer transition-all duration-300 hover:shadow-neon"
                 tabIndex={0}
-                aria-label="Desenvolvimento Full Stack"
+                aria-label={t('about.cards.fullstack.title')}
               >
                 <Code
                   className="w-8 h-8 text-primary mx-auto mb-3 group-hover:text-[#7D43B3] transition-colors"
                   style={{ color: "#7D43B3" }}
                 />
                 <h4 className="font-semibold mb-2 righteous-regular group-hover:text-[#7D43B3] transition-colors">
-                  Desenvolvimento Full Stack
+                  {t('about.cards.fullstack.title')}
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  Especializado em React, Node.js e arquiteturas modernas
+                  {t('about.cards.fullstack.desc')}
                 </p>
               </motion.div>
               {/* Card 2 */}
@@ -94,17 +90,17 @@ export const AboutSection = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="card-cyberpunk p-5 text-center group relative cursor-pointer transition-all duration-300 hover:shadow-neon-blue"
                 tabIndex={0}
-                aria-label="Resolução de Problemas"
+                aria-label={t('about.cards.problems.title')}
               >
                 <Smartphone
                   className="w-8 h-8 text-accent mx-auto mb-3 group-hover:text-[#1f9eac] transition-colors"
                   style={{ color: "#1f9eac" }}
                 />
                 <h4 className="font-semibold mb-2 righteous-regular group-hover:text-[#1f9eac] transition-colors">
-                  Resolução de Problemas
+                  {t('about.cards.problems.title')}
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  Abordagem analítica e pensamento criativo
+                  {t('about.cards.problems.desc')}
                 </p>
               </motion.div>
               {/* Card 3 */}
@@ -112,17 +108,17 @@ export const AboutSection = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="card-cyberpunk p-5 text-center group relative cursor-pointer transition-all duration-300 hover:shadow-neon-pink"
                 tabIndex={0}
-                aria-label="Inovação Constante"
+                aria-label={t('about.cards.innovation.title')}
               >
                 <Globe
                   className="w-8 h-8 text-primary mx-auto mb-3 group-hover:text-[#BB208D] transition-colors"
                   style={{ color: "#BB208D" }}
                 />
                 <h4 className="font-semibold mb-2 righteous-regular group-hover:text-[#BB208D] transition-colors">
-                  Inovação Constante
+                  {t('about.cards.innovation.title')}
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  Sempre aprendendo e aplicando novas tecnologias
+                  {t('about.cards.innovation.desc')}
                 </p>
               </motion.div>
             </div>
@@ -143,7 +139,7 @@ export const AboutSection = () => {
                     d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"
                   />
                 </svg>
-                Certificações & Conquistas
+                {t('about.certTitle')}
               </h3>
               <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                 {[

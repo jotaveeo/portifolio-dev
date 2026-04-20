@@ -1,0 +1,174 @@
+{
+  "bio": {
+    "status": "Available for new projects",
+    "role": "Full Stack Developer & Tech Builder",
+    "description": "I turn ideas into real digital products. Specialized in modern web apps, automations, and SaaS — from a robust backend to an impressive frontend.",
+    "stats": {
+      "projects": "Projects",
+      "experience": "Experience",
+      "commits": "Commits",
+      "years": " years"
+    },
+    "projects": {
+      "title": "Featured Projects",
+      "nocontrole": {
+        "name": "NoControle",
+        "description": "Complete financial system featuring a landing page, MongoDB, Firebase, and a native backend.",
+        "badge": "⚡ Live",
+        "tag": "SaaS · Fintech"
+      },
+      "portfolio": {
+        "name": "My Personal Site",
+        "description": "Personal landing page with email automation, direct contact integration, and custom domain.",
+        "badge": "🚀 New",
+        "tag": "Landing Page"
+      },
+      "guia-engenharia": {
+        "name": "AI Engineering Guide",
+        "description": "Digital product offering an AI-powered engineering guide, landing page, and custom domain.",
+        "badge": "🤖 AI",
+        "tag": "Education · AI"
+      },
+      "iptucontrol": {
+        "name": "IPTU Control",
+        "description": "Property tax control system for real estate agencies. Includes an admin dashboard and MySQL.",
+        "badge": "🏢 B2B",
+        "tag": "Management · B2B"
+      },
+      "photoinlive": {
+        "name": "PhotoInLive",
+        "description": "Live event photography platform. Contains a landing page, complex database, and AWS backend.",
+        "badge": "📸 Cloud",
+        "tag": "Events · Platform"
+      },
+      "vizinhobot": {
+        "name": "VizinhoBot",
+        "description": "Custom API and backend to automate TikTok video generation and posting workflows.",
+        "badge": "📱 Social",
+        "tag": "Automation · Bot"
+      },
+      "zapbot": {
+        "name": "ZapBot Billing",
+        "description": "Integrated system for sending automated billing messages directly via the WhatsApp API.",
+        "badge": "💬 Auto",
+        "tag": "Automation · Fintech"
+      },
+      "igreja-redentor": {
+        "name": "Redentor Church",
+        "description": "Institutional landing page integrated with WhatsApp news automation flows.",
+        "badge": "⛪ Institutional",
+        "tag": "Landing Page · Automation"
+      }
+    },
+    "services": {
+      "title": "What I Do",
+      "items": [
+        {
+          "title": "Web Dev",
+          "desc": "Modern websites, apps, and landing pages"
+        },
+        {
+          "title": "Automations",
+          "desc": "Bots, integrations, and automated flows"
+        },
+        {
+          "title": "SaaS & APIs",
+          "desc": "Robust backends and scalable products"
+        }
+      ]
+    },
+    "cta": {
+      "heading": "Need a dev for your project?",
+      "sub": "I reply within 24h · Freelance & Contract available",
+      "wppBtn": "Chat on WhatsApp",
+      "portBtn": "View Portfolio"
+    },
+    "social": {
+      "title": "Networks & Contact"
+    },
+    "footer": " Built with 💜 and lots of ☕"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "status": "System Operational"
+  },
+  "hero": {
+    "openToWork": "Open to work",
+    "title1": "Crafting memorable",
+    "title2": "software.",
+    "desc1": "I am ",
+    "descName": "João Vitor",
+    "desc2": ", a Computer Engineer and Full Stack Developer focused on building scalable, high-performance applications with exceptional design.",
+    "btn1": "Explore Work",
+    "btn2": "Start a Conversation",
+    "stack": "Core Stack",
+    "devBadge": "Developer"
+  },
+  "about": {
+    "title1": "...but you can call me João",
+    "subtitle": "Get to know the person behind the code",
+    "greeting": "Nice to meet you, I'm João! 👨🏽‍💻",
+    "p1": "With years of experience in technology, I am passionate about creating solutions that make a difference. My journey began with a curiosity for tech and turned into a career dedicated to excellence in software development.",
+    "p2": "A dedicated developer always looking for new challenges and learning opportunities. I believe in the power of technology to change the world and am committed to contributing to this transformation.",
+    "cards": {
+      "fullstack": {
+        "title": "Full Stack Development",
+        "desc": "Specialized in React, Node.js, and modern architectures"
+      },
+      "problems": {
+        "title": "Problem Solving",
+        "desc": "Analytical approach and creative thinking"
+      },
+      "innovation": {
+        "title": "Constant Innovation",
+        "desc": "Always learning and applying new technologies"
+      }
+    },
+    "certTitle": "Certifications & Achievements"
+  },
+  "contact": {
+    "label": "contact.init()",
+    "title": "Let's Build Something?",
+    "subtitle": "Ready to turn your idea into a product. I reply within 24h.",
+    "channels": "Contact Channels",
+    "whatsapp": "Fast response",
+    "socials": "Social Networks",
+    "availability": {
+      "title": "Available for projects",
+      "desc": "Freelance & Contract · Reply within 24h"
+    },
+    "form": {
+      "header": "Send a Message",
+      "subtitle": "Fill out the form and I'll get back to you as soon as possible.",
+      "name": "Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "E.g.: Landing page for my company",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project, timeline, and estimated budget...",
+      "btnSend": "Send Message",
+      "btnSending": "Sending...",
+      "btnClear": "Clear",
+      "successTitle": "Message Sent!",
+      "successMsg": "Thanks for reaching out — I'll reply soon 🚀",
+      "newMsg": "New Message",
+      "errorConfig": "Configuration error: EmailJS keys missing in .env",
+      "errorSend": "Could not send. Check your connection and try again.",
+      "secure": "Your data is kept confidential and used only to reply to your message."
+    }
+  },
+  "footerPort": {
+    "name": "João Vitor Oliveira",
+    "desc": "Full Stack Developer passionate about building modern and scalable interfaces.",
+    "rights": "João Vitor Oliveira. All rights reserved.",
+    "builtWith": "Built with",
+    "andLotsOf": "and lots of",
+    "coffee": "coffee"
+  }
+}

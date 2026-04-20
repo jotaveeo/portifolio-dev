@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "../LanguageSwitcher";
 
 export function Navbar() {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -15,11 +18,11 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: t('nav.home'), href: "#home" },
+    { name: t('nav.about'), href: "#about" },
+    { name: t('nav.skills'), href: "#skills" },
+    { name: t('nav.projects'), href: "#projects" },
+    { name: t('nav.contact'), href: "#contact" },
   ];
 
   return (
@@ -67,12 +70,16 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Status Indicator (Desktop) */}
-          <div className="hidden lg:flex items-center space-x-3 border border-border/50 rounded-full px-3 py-1 bg-card/50">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-              System Operational
-            </span>
+          {/* Status Indicator (Desktop) & Language Matcher */}
+          <div className="hidden lg:flex items-center space-x-6">
+            <div className="flex items-center space-x-3 border border-border/50 rounded-full px-3 py-1 bg-card/50">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                {t('nav.status')}
+              </span>
+            </div>
+            
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -113,17 +120,20 @@ export function Navbar() {
                 </motion.a>
               ))}
             </div>
-            {/* Status Indicator (Mobile) */}
+            {/* Status Indicator & Language Matcher (Mobile) */}
             <motion.div 
                initial={{ y: 20, opacity: 0 }}
                animate={{ y: 0, opacity: 1 }}
                transition={{ delay: 0.6, duration: 0.5 }}
-               className="mt-auto mb-16 flex items-center space-x-3 border border-border/50 rounded-full px-4 py-2 bg-card/50"
+               className="mt-auto mb-16 flex flex-col items-center space-y-6"
             >
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                System Operational
-              </span>
+              <div className="flex items-center space-x-3 border border-border/50 rounded-full px-4 py-2 bg-card/50">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                  {t('nav.status')}
+                </span>
+              </div>
+              <LanguageSwitcher className="scale-125" />
             </motion.div>
           </motion.div>
         )}

@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Code, MessageCircle, ChevronDown } from "lucide-react";
+import { useTranslation, Trans } from "react-i18next";
 
 export function HeroSection() {
+  const { t } = useTranslation();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -53,14 +55,14 @@ export function HeroSection() {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                 </span>
                 <span className="text-sm font-mono text-primary font-medium tracking-wide uppercase">
-                  Open to work
+                  {t('hero.openToWork')}
                 </span>
               </div>
 
               <h1 className="text-5xl sm:text-7xl lg:text-[5.5rem] font-bold tracking-tighter leading-[1.1]">
-                <span className="block text-foreground">Criando software</span>
+                <span className="block text-foreground">{t('hero.title1')}</span>
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-pink-500">
-                  memorável.
+                  {t('hero.title2')}
                 </span>
               </h1>
             </motion.div>
@@ -69,13 +71,13 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed font-light"
             >
-              Sou o{" "}
-              <strong className="text-foreground font-semibold">
-                João Vitor
-              </strong>
-              , um Engenheiro de Computação e Full Stack Developer focado em
-              construir aplicações escaláveis, performáticas e com design
-              excepcional.
+              <Trans i18nKey="hero.desc">
+                {t('hero.desc1')}
+                <strong className="text-foreground font-semibold">
+                  {t('hero.descName')}
+                </strong>
+                {t('hero.desc2')}
+              </Trans>
             </motion.p>
 
             <motion.div
@@ -88,7 +90,7 @@ export function HeroSection() {
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
                 <Code className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" />
-                <span className="relative z-10">Explorar Trabalhos</span>
+                <span className="relative z-10">{t('hero.btn1')}</span>
               </a>
 
               <a
@@ -96,7 +98,7 @@ export function HeroSection() {
                 className="group px-8 py-4 bg-card/80 backdrop-blur border border-border text-foreground font-semibold rounded-lg transition-all hover:bg-card hover:border-accent hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform text-muted-foreground group-hover:text-accent" />
-                <span>Iniciar Conversa</span>
+                <span>{t('hero.btn2')}</span>
               </a>
             </motion.div>
 
@@ -106,7 +108,7 @@ export function HeroSection() {
               className="pt-12 border-t border-border/50"
             >
               <p className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">
-                Stack Principal
+                {t('hero.stack')}
               </p>
               <div className="flex gap-6 text-muted-foreground">
                 <span className="hover:text-[#61DAFB] transition-colors cursor-default font-mono">
@@ -160,8 +162,7 @@ export function HeroSection() {
                 }}
                 className="absolute top-12 -right-6 bg-card/90 backdrop-blur-md border border-border px-4 py-2 rounded-lg shadow-xl font-mono text-xs"
               >
-                <span className="text-pink-500">&lt;</span>Developer
-                <span className="text-pink-500">/&gt;</span>
+                <span className="text-pink-500">&lt;</span>{t('hero.devBadge')}<span className="text-pink-500">/&gt;</span>
               </motion.div>
               <motion.div
                 animate={{ y: [5, -5, 5] }}

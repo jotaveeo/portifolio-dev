@@ -16,6 +16,8 @@ import {
   ChevronRight,
   ArrowRight,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import "./bio-page.css";
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
@@ -53,9 +55,9 @@ const SKILLS = [
 ];
 
 const STATS = [
-  { target: 20, suffix: "+", label: "Projetos" },
-  { target: 6, suffix: " anos", label: "Experiência" },
-  { target: 1500, suffix: "+", label: "Commits" },
+  { target: 20, suffix: "+", id: "projects" },
+  { target: 6, suffix: "years", id: "experience" },
+  { target: 1500, suffix: "+", id: "commits" },
 ];
 
 const PROJECTS = [
@@ -254,6 +256,7 @@ function Divider() {
 // ─── Section Components ───────────────────────────────────────────────────────
 
 function HeroSection() {
+  const { t } = useTranslation();
   return (
     <motion.header
       className="bio-section bio-hero"
@@ -263,7 +266,7 @@ function HeroSection() {
     >
       <motion.div variants={childFade} className="bio-v2-status">
         <span className="bio-v2-status-dot" />
-        Disponível para projetos
+        {t('bio.status')}
       </motion.div>
 
       <motion.div variants={childFade} className="bio-v2-avatar-wrap">
@@ -283,12 +286,10 @@ function HeroSection() {
         <h1 className="bio-v2-name">João Vitor Oliveira</h1>
         <p className="bio-v2-role">
           <Code2 size={14} />
-          Full Stack Developer &amp; Tech Builder
+          {t('bio.role')}
         </p>
         <p className="bio-v2-bio">
-          Transformo ideias em produtos digitais reais. Especialista em
-          aplicações web modernas, automações e SaaS — do backend robusto ao
-          frontend que impressiona.
+          {t('bio.description')}
         </p>
       </motion.div>
 
@@ -304,6 +305,7 @@ function HeroSection() {
 }
 
 function StatsSection() {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 700);
@@ -318,15 +320,15 @@ function StatsSection() {
       transition={{ duration: 0.6 }}
     >
       {STATS.map((s) => (
-        <div key={s.label} className="bio-v2-stat-card">
+        <div key={s.id} className="bio-v2-stat-card">
           <span className="bio-v2-stat-number">
             {visible ? (
-              <Counter target={s.target} suffix={s.suffix} />
+              <Counter target={s.target} suffix={s.suffix === 'years' ? t('bio.stats.years') : s.suffix} />
             ) : (
-              `0${s.suffix}`
+              `0${s.suffix === 'years' ? t('bio.stats.years') : s.suffix}`
             )}
           </span>
-          <span className="bio-v2-stat-label">{s.label}</span>
+          <span className="bio-v2-stat-label">{t(`bio.stats.${s.id}`)}</span>
         </div>
       ))}
     </motion.div>
@@ -334,6 +336,7 @@ function StatsSection() {
 }
 
 function ProjectsSection() {
+  const { t } = useTranslation();
   return (
     <motion.section
       className="bio-section"
@@ -343,7 +346,7 @@ function ProjectsSection() {
     >
       <motion.div variants={childFade}>
         <SectionLabel icon={<Zap size={13} />}>
-          Projetos em Destaque
+          {t('bio.projects.title')}
         </SectionLabel>
       </motion.div>
 
@@ -363,16 +366,16 @@ function ProjectsSection() {
             <div className="bio-project-accent" />
             <div className="bio-project-body">
               <div className="bio-project-top">
-                <span className="bio-project-name">{p.name}</span>
+                <span className="bio-project-name">{t(`bio.projects.${p.id}.name`)}</span>
                 <span
                   className={`bio-project-badge bio-project-badge--${p.badgeType}`}
                 >
-                  {p.badge}
+                  {t(`bio.projects.${p.id}.badge`)}
                 </span>
               </div>
-              <p className="bio-project-desc">{p.description}</p>
+              <p className="bio-project-desc">{t(`bio.projects.${p.id}.description`)}</p>
               <div className="bio-project-footer">
-                <span className="bio-project-tag">{p.tag}</span>
+                <span className="bio-project-tag">{t(`bio.projects.${p.id}.tag`)}</span>
                 <ExternalLink size={14} className="bio-project-arrow" />
               </div>
             </div>
@@ -384,6 +387,7 @@ function ProjectsSection() {
 }
 
 function ServicesSection() {
+  const { t } = useTranslation();
   return (
     <motion.section
       className="bio-section"
@@ -392,11 +396,11 @@ function ServicesSection() {
       variants={stagger(0.1)}
     >
       <motion.div variants={childFade}>
-        <SectionLabel icon={<Briefcase size={13} />}>O Que Faço</SectionLabel>
+        <SectionLabel icon={<Briefcase size={13} />}>{t('bio.services.title')}</SectionLabel>
       </motion.div>
 
       <div className="bio-services-grid">
-        {SERVICES.map((s) => (
+        {SERVICES.map((s, idx) => (
           <motion.div
             key={s.title}
             className="bio-service-card"
@@ -406,8 +410,8 @@ function ServicesSection() {
           >
             <div className="bio-service-icon">{s.icon}</div>
             <div>
-              <p className="bio-service-title">{s.title}</p>
-              <p className="bio-service-desc">{s.desc}</p>
+              <p className="bio-service-title">{t(`bio.services.items.${idx}.title`)}</p>
+              <p className="bio-service-desc">{t(`bio.services.items.${idx}.desc`)}</p>
             </div>
           </motion.div>
         ))}
@@ -417,6 +421,7 @@ function ServicesSection() {
 }
 
 function CtaSection() {
+  const { t } = useTranslation();
   return (
     <motion.section
       className="bio-section bio-cta-section"
@@ -425,9 +430,9 @@ function CtaSection() {
       variants={stagger(0.1)}
     >
       <motion.div variants={childFade} className="bio-cta-text">
-        <p className="bio-cta-heading">Precisa de um dev para seu projeto?</p>
+        <p className="bio-cta-heading">{t('bio.cta.heading')}</p>
         <p className="bio-cta-sub">
-          Respondo em até 24h · Freelance &amp; PJ disponível
+          {t('bio.cta.sub')}
         </p>
       </motion.div>
 
@@ -441,7 +446,7 @@ function CtaSection() {
           whileTap={{ scale: 0.97 }}
         >
           <MessageCircle size={17} />
-          Falar no WhatsApp
+          {t('bio.cta.wppBtn')}
         </motion.a>
         <motion.a
           href="/"
@@ -450,7 +455,7 @@ function CtaSection() {
           whileTap={{ scale: 0.97 }}
         >
           <Globe size={17} />
-          Ver Portfólio
+          {t('bio.cta.portBtn')}
           <ArrowRight size={15} />
         </motion.a>
       </motion.div>
@@ -459,6 +464,7 @@ function CtaSection() {
 }
 
 function SocialSection() {
+  const { t } = useTranslation();
   return (
     <motion.section
       className="bio-section"
@@ -468,7 +474,7 @@ function SocialSection() {
     >
       <motion.div variants={childFade}>
         <SectionLabel icon={<Globe size={13} />}>
-          Redes &amp; Contato
+          {t('bio.social.title')}
         </SectionLabel>
       </motion.div>
 
@@ -497,8 +503,15 @@ function SocialSection() {
 }
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
-const BioPage = () => (
+const BioPage = () => {
+  const { t } = useTranslation();
+  return (
   <div className="bio-v2-container">
+    {/* Adicionando LanguageSwitcher no topo à direita */}
+    <div className="absolute top-6 right-6 z-50">
+      <LanguageSwitcher />
+    </div>
+
     {/* Background */}
     <div className="bio-v2-bg" aria-hidden="true">
       <div className="bio-v2-glow bio-v2-glow-1" />
@@ -531,12 +544,12 @@ const BioPage = () => (
         transition={{ delay: 1.4 }}
       >
         <p className="bio-v2-footer-text">
-          © {new Date().getFullYear()} João Vitor Oliveira · Feito com 💜 e
-          muito ☕
+          © {new Date().getFullYear()} João Vitor Oliveira · {t('bio.footer')}
         </p>
       </motion.footer>
     </div>
   </div>
-);
+  );
+};
 
 export default BioPage;
