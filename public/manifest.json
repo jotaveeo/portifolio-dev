@@ -1,0 +1,21 @@
+{
+  "name": "João Vitor Oliveira - Full Stack Developer",
+  "short_name": "João Vitor",
+  "description": "Portfólio de João Vitor Oliveira, desenvolvedor full stack.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#18181b",
+  "theme_color": "#7D43B3",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
